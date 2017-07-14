@@ -8,6 +8,9 @@
 - Notifications
 - Web App
 - Content Management
+- [Extensibility](#extensibility)
+
+<!-- ![Carbon Data Model](img/carbon_data_model.png) -->
 
 
 ## <a name="Things">Things</a>
@@ -20,9 +23,7 @@ Each node has a [node type](#node-types). The node type defines the channels, ht
 
 Each node is assigned to a [site](#sites) and the site is assigned to a [folder](#folders) within the hierarchy. Through the site assignment, a node adopts those folder permissions.
 
-#### Node Metadata
-
-Nodes have a json-based metadata container that can be used to extend the data structure for nodes.
+Nodes have [Metadata](#metadata).
 
 ### <a name="node-types">Node Types</a>
 
@@ -44,22 +45,6 @@ Node types are important because they lock together a data structure (channels) 
 Channels store all timestamped values for nodes. They are like data fields or columns in a database. They provide context through naming and are used to reference node data.
 
 Each channel has a defined data type: `String`, `Number`, or `Boolean`.
-
-### <a name="transforms">Transforms</a>
-
-Transforms (aka lambda functions) are javascript functions that run when a value is received on a designated channel. They are used to transform incoming data or run sophisticated rules algorithms. A built-in library provides commonly used functionlaity such as retrieving current values from other channels, getting historical data, or sending values to other channels. Lambdas are short-lived (typically <10ms) and do not retain state.
-
-Common uses of Lambdas include:
-
-1. Forwarding data from one channel to another
-1. Streaming calculations, such as calculating a channel's deriverative
-1. Rules processing that are based on history or channels on another node
-
-### <a name="drivers">Drivers</a>
-
-Drivers are files that physical devices can download and run. If a node's node type changes, it will download the driver associated with that node type and change functionality.
-
-Drivers also include code which instruct devices to send data to meshify on channels that are defined by the node type.
 
 ## <a name="visualization">Visualization</a>
 
@@ -133,3 +118,25 @@ In Meshify, all nodes are contained within sites. The site has a location. A sit
 ### <a name="provisioning-files">Provisioning Files</a>
 
 ### <a name="files">Files</a>
+
+## <a name="extensibility">Extensibility</a>
+### <a name="transforms">Transforms</a>
+
+Transforms (aka lambda functions) are javascript functions that run when a value is received on a designated channel. They are used to transform incoming data or run sophisticated rules algorithms. A built-in library provides commonly used functionlaity such as retrieving current values from other channels, getting historical data, or sending values to other channels. Lambdas are short-lived (typically <10ms) and do not retain state.
+
+Common uses of Lambdas include:
+
+1. Forwarding data from one channel to another
+1. Streaming calculations, such as calculating a channel's deriverative
+1. Rules processing that are based on history or channels on another node
+
+### <a name="metadata">Metadata</a>
+
+Many objects in Carbon have json-based metadata container that can be used to extend the data structure for nodes. Metadata can be read and written from within templates on the standard dashboard core or used with new applications or cores.
+
+
+### <a name="drivers">Drivers</a>
+
+Drivers are files that physical devices can download and run. If a node's node type changes, it will download the driver associated with that node type and change functionality.
+
+Drivers also include code which instruct devices to send data to meshify on channels that are defined by the node type.
