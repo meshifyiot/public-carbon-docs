@@ -19,7 +19,7 @@
 
 In Meshify, each connected thing (sensor, equipment, gateway, etc.) is a node. A node is a collection of data, which are organized on [channels](#channels).
 
-Each node has a [node type](#node-types). The node type defines the channels, html templates, transforms, and drivers.
+Each node has a [node type](#node-types). The node type defines the channels, html templates, lambda functions, and drivers.
 
 Each node is assigned to a [site](#sites) and the site is assigned to a [folder](#folders) within the hierarchy. Through the site assignment, a node adopts those folder permissions.
 
@@ -32,12 +32,12 @@ The node type defines the templatized configuration for a node. It can also be t
 * [Channels](#channels)
 * [HTML Templates](#html-templates)
 * [Notification Rules](#rules)
-* [Transforms](#transforms)
+* [Lambda Functions](#lambda-functions)
 * [Drivers](#drivers)
 
 A node type is the primary way that nodes receive customization. However node types can be built to allow node-specific customization. For example, a notification rule threshold based on a channel value that is defined different for each node.
 
-Node types are important because they lock together a data structure (channels) with features that use the data structure (such as html templates, notifications, and transforms).
+Node types are important because they lock together a data structure (channels) with features that use the data structure (such as html templates, notifications, and lambda functions).
 
 
 ### <a name="channels">Channels</a>
@@ -132,9 +132,9 @@ Folders have [Metadata](#metadata).
 ### <a name="files">Files</a>
 
 ## <a name="extensibility">Extensibility</a>
-### <a name="transforms">Transforms</a>
+### <a name="lambda-functions">Lambda Functions</a>
 
-Transforms (aka lambda functions) are javascript functions that run when a value is received on a designated channel. They are used to transform incoming data or run sophisticated rules algorithms. A built-in library provides commonly used functionlaity such as retrieving current values from other channels, getting historical data, or sending values to other channels. Lambdas are short-lived (typically <10ms) and do not retain state.
+Lambda functions are javascript functions that run when a value is received on a designated channel. They are used to transform incoming data or run sophisticated rules algorithms. A built-in library provides commonly used functionlaity such as retrieving current values from other channels, getting historical data, or sending values to other channels. Lambdas are short-lived (typically <10ms) and do not retain state.
 
 Common uses of Lambdas include:
 
