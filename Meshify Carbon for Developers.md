@@ -46,6 +46,13 @@ Channels store all timestamped values for nodes. They are like data fields or co
 
 Each channel has a defined data type: `String`, `Number`, or `Boolean`.
 
+
+### <a name="sites">Sites</a>
+
+In Meshify, all nodes are contained within sites. The site has a location. A site has a status based on the status and roll-up settings of contained nodes.
+
+Sites have [Metadata](#metadata).
+
 ## <a name="visualization">Visualization</a>
 
 ### <a name="html-templates">HTML Templates</a>
@@ -55,6 +62,10 @@ HTML Templates provide a customized and dynamic view of data from a particular n
 Each html template is a [Riot.js](http://riotjs.com) custom tag. Templates use Meshify library functions and Meshify custom tags to visualize channel data numerically or in charts.
 
 HTML Templates leverage [Tachyons](http://tachyons.io) CSS Toolkit and [Moment.js](http://momentjs.com).
+
+```
+When finalized, html snippets will go here
+```
 
 ### <a name="site-templates">Site Templates</a>
 
@@ -67,6 +78,8 @@ Site templates are like node HTML Templates, but they are associated with [sites
 Each person accessing Meshify is a user. A user authenticates using their e-mail address and password.
 
 A user is placed in one or more folders and has access to any folders at or below their assignment.
+
+Users have [Metadata](#metadata).
 
 ### <a name="roles">Roles</a>
 
@@ -86,9 +99,8 @@ A user can see sites at or below their assigned folder(s), but cannot see any fo
 
 A single folder sits at the top of the hierarchy. A user placed within this folder may see the contents of any folder in the system.
 
-### <a name="sites">Sites</a>
+Folders have [Metadata](#metadata).
 
-In Meshify, all nodes are contained within sites. The site has a location. A site has a status based on the status and roll-up settings of contained nodes.
 
 ## Notifications
 
@@ -132,7 +144,7 @@ Common uses of Lambdas include:
 
 ### <a name="metadata">Metadata</a>
 
-Many objects in Carbon have json-based metadata container that can be used to extend the data structure for nodes. Metadata can be read and written from within templates on the standard dashboard core or used with new applications or cores.
+Instance objects in Carbon (such as users and folders) have json-based metadata container that can be used to extend the data structure for nodes. Metadata can be read and written from within templates on the standard dashboard core or used with new applications or cores.
 
 
 ### <a name="drivers">Drivers</a>
