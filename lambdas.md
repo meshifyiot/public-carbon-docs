@@ -1,3 +1,36 @@
+<!-- TOC -->
+
+- [Lambdas](#lambdas)
+    - [Context](#context)
+        - [ctx](#ctx)
+    - [Functions](#functions)
+        - [daysToSeconds(days)](#daystosecondsdays)
+            - [Params](#params)
+            - [Returns](#returns)
+            - [Example](#example)
+        - [hoursToSeconds(hours)](#hourstosecondshours)
+            - [Params](#params-1)
+            - [Returns](#returns-1)
+            - [Example](#example-1)
+        - [log(args ... )](#logargs--)
+            - [Params](#params-2)
+        - [sendAsNodeByUniqueId(uniqueId, channelName, value, nodeTypeName, parentUniqueId)](#sendasnodebyuniqueiduniqueid-channelname-value-nodetypename-parentuniqueid)
+            - [Limiation](#limiation)
+            - [Params](#params-3)
+            - [Returns:](#returns)
+            - [Example:](#example)
+        - [getCurrentDataByUniqueId(uniqueId, channelNames)](#getcurrentdatabyuniqueiduniqueid-channelnames)
+            - [Params](#params-4)
+            - [Returns](#returns-2)
+            - [Example](#example-2)
+        - [getHistoryDataByUniqueId(uniqueId, channelName, start, end)](#gethistorydatabyuniqueiduniqueid-channelname-start-end)
+            - [Params](#params-5)
+            - [Returns](#returns-3)
+            - [Example](#example-3)
+    - [Testing](#testing)
+        - [TestResult{}](#testresult)
+
+<!-- /TOC -->
 # Lambdas
 
 carbon lambdas are blah TODO. They can be chained ie a lambda can triger another lambda however there are some limitations. A message sent by a lambda will not be able to trigger the same lambda (recursion). There will also be a maximum depth limit of 10 - meaning the number of nested or chained lambda calls will be limited to 10. Lambdas must run under 300ms. "Best practice" target is 100ms. We expose a `ctx` variable and several functions to provide additional information to the lambda functions.
