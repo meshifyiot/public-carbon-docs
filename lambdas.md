@@ -23,7 +23,7 @@ log(JSON.stringify(ctx))
 {
     "channelName": "tempchannel",
     "nodeTypeId": 1,
-    "parentNodeUniqueID": "00:00:00:00:00",
+    "parentNodeUniqueId": "00:00:00:00:00",
     "timestamp": 1500591111,
     "uniqueId": "00:00:00:00:00",
     "value": 9000.1
