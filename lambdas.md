@@ -3,7 +3,7 @@
 carbon lambdas are blah TODO. They can be chained ie a lambda can triger another lambda however there are some limitations. A message sent by a lambda will not be able to trigger the same lambda (recursion). There will also be a maximum depth limit of 10 - meaning the number of nested or chained lambda calls will be limited to 10. Lambdas must run under 300ms. "Best practice" target is 100ms. We expose a `ctx` variable and several functions to provide additional information to the lambda functions.
 
 When to use a lambda:
-TODO EXAMPLES
+TODO EXAMPLES - compare against a wilma rule. IE what can I do with a rule vs lambda and when should a lambda become something else. 
 
 When to not use a lambda:
 TODO EXAMPLES
@@ -15,9 +15,9 @@ TODO add swagger link or something ?
 
 We have provided some basic message context initially to the lambda. Any additional context will need to be fetched through a provided function.
 
-### ctx 
+### ctx
 
-```javascript 
+```javascript
 log(JSON.stringify(ctx))
 /*
 {
@@ -75,7 +75,7 @@ log(seconds) // 18000
 
 ### log(args ... )
 
-Logs the .toString() result of each arg passed to it.
+Logs the .toString() result of each arg passed to it. **best practice** use log() instead of console.log().
 
 #### Params
 
@@ -188,5 +188,14 @@ log(JSON.stringify(historicalData))
 
 ## Testing
 
-TODO swagger api test link. 
-Testing can be done by hitting the API. The result object will contain the following information:
+TODO swagger api test link.
+
+Hitting the test endpoing will not trigger any additional side effects. For example calling things like sendAsNodeByUniqueId() will not actually send the resulting message. The messages that would have otherwise been sent will however be in the resulting output. Testing can be done by hitting the API. The result object will contain the following information:
+
+### TestResult{}
+
+- output - `string[]` - returns an array of output messages from the log() messages. May also contain additional runtime logs including errors and warnings from the .js vm.
+- messages - `messages.ActivateIn[]` - returns an array of messages that would be sent in production.
+- errors - `error[]` - contains runtime errors.
+- timedOut - `bool` - if the lamnbda timedout.
+- runTime - `int` - the runtime in ns.
