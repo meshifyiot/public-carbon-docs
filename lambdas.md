@@ -66,7 +66,7 @@ log(JSON.stringify(ctx))
 
 ## Functions
 
-There are several functions that are exposed to the lambda js engine. Generally speaking there are two types of functions exposed to the javascript engine - utility helper functions and carbon centric functions. The [underscorejs]() library is also imported.
+There are several functions that are exposed to the lambda engine. Generally speaking there are two types of functions exposed to the javascript engine - utility helper functions and carbon centric functions. The [underscorejs]() library is also imported.
 
 ### daysToSeconds(days)
 
