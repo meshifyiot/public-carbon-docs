@@ -1,53 +1,3 @@
-<!-- TOC -->
-
-- [Rules](#rules)
-    - [Basics](#basics)
-    - [Context](#context)
-    - [Functions](#functions)
-        - [Functions Available](#functions-available)
-    - [min(n1, n2)](#minn1-n2)
-            - [Params](#params)
-            - [Returns](#returns)
-            - [Example](#example)
-        - [max(n1, n2)](#maxn1-n2)
-            - [Params](#params-1)
-            - [Returns](#returns-1)
-            - [Example](#example-1)
-        - [contains(str1, str2)](#containsstr1-str2)
-            - [Params](#params-2)
-            - [Returns](#returns-2)
-            - [Example](#example-2)
-        - [notContains(str1, str2)](#notcontainsstr1-str2)
-            - [Params](#params-3)
-            - [Returns](#returns-3)
-            - [Example](#example-3)
-        - [channelUniqueCount(channelName, lookBackMinutes)](#channeluniquecountchannelname-lookbackminutes)
-            - [Params](#params-4)
-            - [Returns](#returns-4)
-            - [Example](#example-4)
-        - [channelCount(channelName, lookBackMinutes)](#channelcountchannelname-lookbackminutes)
-            - [Params](#params-5)
-            - [Returns](#returns-5)
-            - [Example](#example-5)
-        - [channelMax(channelName, lookBackMinutes)](#channelmaxchannelname-lookbackminutes)
-            - [Params](#params-6)
-            - [Returns](#returns-6)
-            - [Example](#example-6)
-        - [channelMin(channelName, lookBackMinutes)](#channelminchannelname-lookbackminutes)
-            - [Params](#params-7)
-            - [Returns](#returns-7)
-            - [Example](#example-7)
-        - [channelSum(channelName, lookBackMinutes)](#channelsumchannelname-lookbackminutes)
-            - [Params](#params-8)
-            - [Returns](#returns-8)
-            - [Example](#example-8)
-        - [channelAverage(channelName, lookBackMinutes)](#channelaveragechannelname-lookbackminutes)
-            - [Params](#params-9)
-            - [Returns](#returns-9)
-            - [Example](#example-9)
-    - [Testing](#testing)
-
-<!-- /TOC -->
 # Rules
 
 Carbon rules allow basic on off for a node state. They are currently executed with will's markup language "Wilma". Rules are intended to be lighter weight then lambdas. Rules must run under 100ms. "Best practice" target is 1ms. We expose several context variables including current channel data values. As well as several functions.
@@ -57,6 +7,23 @@ TODO EXAMPLES - compare against a lambda. IE what can I do with a rule vs lambda
 
 When to not use a lambda:
 TODO EXAMPLES
+
+# Table of Contents
+
+- [Basics](#basics)
+- [Context](#context)
+- [Functions](#functions)
+- [min(n1, n2)](#minn1-n2)
+    - [max(n1, n2)](#maxn1-n2)
+    - [contains(str1, str2)](#containsstr1-str2)
+    - [notContains(str1, str2)](#notcontainsstr1-str2)
+    - [channelUniqueCount(channelName, lookBackMinutes)](#channeluniquecountchannelname-lookbackminutes)
+    - [channelCount(channelName, lookBackMinutes)](#channelcountchannelname-lookbackminutes)
+    - [channelMax(channelName, lookBackMinutes)](#channelmaxchannelname-lookbackminutes)
+    - [channelMin(channelName, lookBackMinutes)](#channelminchannelname-lookbackminutes)
+    - [channelSum(channelName, lookBackMinutes)](#channelsumchannelname-lookbackminutes)
+    - [channelAverage(channelName, lookBackMinutes)](#channelaveragechannelname-lookbackminutes)
+- [Testing](#testing)
 
 ## Basics
 
