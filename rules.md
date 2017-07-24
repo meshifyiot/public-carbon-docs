@@ -11,13 +11,73 @@ TODO EXAMPLES
 Lambdas can be tested here:
 TODO add swagger link or something ?
 
+## Basics
+
+* Wilma can evaluate basic math, comparison operators, and follows order of operations. The following example(s) will result with true.
+
+```javascript
+1 + 1 == 2
+1 != 2 * 1
+2 >= 4 / 2
+1 + 2 * 5 == 11
+(1 + 2) * 5 == 15
+```
+
+* Wilma can do basic boolean algebra. The following example(s) will result with true.
+
+```javascript
+true OR false
+true AND true
+```
+
+* Wilma can use functions. The following example(s) will result with true.
+
+```javascript
+{min(1,2)} == 1
+```
+
+* Wilma has context variables. The following example(s) will result with true. Assuming the somechannel's value is greater then 0.
+
+```javascript
+{.somechannel.value} > 0
+```
+
+* Wilma uses accepts double or single qoutes. The following example(s) will result with true.
+
+```javascript
+{contains("somethinng", "s")}
+{contains('somethinng', 's')}
+```
+
+* Wilma numbers are evaluated as floats. The following example(s) will result with true.
+
+```javascript
+1.00 == 1
+{min(1,2)} == 1.0
+{min(1,2)} == 1
+```
+
+* Wilma keywords, function names and context variables are case insensitive. Best practice: be consistent. The following example(s) will result with true.
+
+```javascript
+{min(1,2)} == {MIN(1,2)}
+{.numberchannel.value} == {.numberChannel.value}
+1 == 1 AND 1 == 1 and 1 == 1
+```
+
+* Wilma can support any combination of these things. The following example(s) will result with true. Assuming the numberchannels value is 1.
+
+```javascript
+{min(1,2)} == {MIN(1,2)} AND {.numberchannel.value} * 5 == 1 * 5
+```
+
 ## Context
 
 TODO
 
 ## Functions
 
-There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions.
+There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function parameters can be used with no qoutes, single or double qoutes. You are permitted to use context variables in function parameters however you are not allowed to use a function calls as a parameter. If there is a use case for this please let us know the exact use case with an example. There are no comments in wilma, comments used in the examples are just for documentation and will need to be removed for execution.
 
 ### min(n1, n2)
 
@@ -36,7 +96,6 @@ result - `float` - the minimum value of the two floats provided.
 
 ```javascript
 {min(1,2)} == 1.0 // true
-{min(1,2)} == 1 // true
 {min(1,2)} == 2 // false
 ```
 
@@ -57,7 +116,6 @@ result - `float` - the max value of the two floats provided.
 
 ```javascript
 {max(1,2)} == 2.0 // true
-{max(1,2)} == 2 // true
 {max(1,2)} == 1 // false
 ```
 
@@ -98,7 +156,9 @@ isFound - `bool` - weather or not str1 was found in str2.
 #### Example
 
 ```javascript
-
+{notContains(abcd,a)} // false
+{notContains(abcd,e)} // true
+{notContains(abcd,abc)} // false
 ```
 
 ### channelUniqueCount(channelName, lookBackMinutes)
@@ -116,8 +176,8 @@ channelUniqueCount - `int` - the number of unique values for the given channel d
 
 #### Example
 
-```
-channelUniqueCount() todo more complex
+```javascript
+{channelUniqueCount('numberchannel',525600)} > 1 // true
 ```
 
 ### channelCount(channelName, lookBackMinutes)
@@ -135,8 +195,8 @@ channelCount - `int` - the number of values for the given channel during the tim
 
 #### Example
 
-```
-channelCount() todo more complex
+```javascript
+{channelCount('numberchannel',525600)} > 1  // true
 ```
 
 ### channelMax(channelName, lookBackMinutes)
@@ -154,8 +214,8 @@ channelMax - `float` - the max value of the channel during the time period.
 
 #### Example
 
-```
-channelMax() todo more complex
+```javascript
+{channelMax('numberchannel',525600)} > 1  // true
 ```
 
 ### channelMin(channelName, lookBackMinutes)
@@ -173,8 +233,8 @@ channelMin - `float` - the min value of the channel during the time period.
 
 #### Example
 
-```
-channelMin() todo more complex
+```javascript
+{channelMin('numberchannel',525600)} < 10000  // true
 ```
 
 ### channelSum(channelName, lookBackMinutes)
@@ -192,8 +252,8 @@ channelSum - `float` - the sum of all the values of the channel during the time 
 
 #### Example
 
-```
-channelSum() todo more complex
+```javascript
+{channelSum('numberchannel',525600)} > 1  // true
 ```
 
 ### channelAverage(channelName, lookBackMinutes)
@@ -211,6 +271,6 @@ channelAverage - `float` - the average value of the channel during the time peri
 
 #### Example
 
-```
-channelAverage() todo more complex
+```javascript
+{channelAverage('numberchannel',525600)} > 1  // true
 ```
