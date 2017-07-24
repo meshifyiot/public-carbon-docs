@@ -1,15 +1,12 @@
 # Rules
 
-Carbon rules allow basic on off for a node state. They are based off willma (will's markup language).Rules are intdeded to be lighter weight then lambdas. Rules must run under 100ms. "Best practice" target is 1ms. We expose several context variables including current channel data values. As well as several basic functions and window functions. All functions must resolve to a single value, and all rules must resolve to true or false.
+Carbon rules allow basic on off for a node state. They are currently executed with will's markup language "Wilma". Rules are intended to be lighter weight then lambdas. Rules must run under 100ms. "Best practice" target is 1ms. We expose several context variables including current channel data values. As well as several functions.
 
 When to use a Rule:
-TODO EXAMPLES - compare against a lambda. IE what can I do with a rule vs lambda 
+TODO EXAMPLES - compare against a lambda. IE what can I do with a rule vs lambda
 
 When to not use a lambda:
 TODO EXAMPLES
-
-Lambdas can be tested here:
-TODO add swagger link or something ?
 
 ## Basics
 
@@ -42,11 +39,20 @@ true AND true
 {.somechannel.value} > 0
 ```
 
-* Wilma uses accepts double or single qoutes. The following example(s) will result with true.
+* Wilma accepts double or single qoutes. The following example(s) will result with true.
 
 ```javascript
 {contains("somethinng", "s")}
 {contains('somethinng', 's')}
+```
+
+* Wilma depends on spacing to differentiate negative numbers and subtraction operations. Negative numbers must not have a space beween the `-` sign and the number itself. Subtraction operators must have a space between the `-` operator and the opperands.
+
+```javascript
+1 - 1 == 0  // true
+1 - -1 == 2 // true
+1-1 == 0    // invalid
+1 - - 1     // invalid
 ```
 
 * Wilma numbers are evaluated as floats. The following example(s) will result with true.
@@ -73,7 +79,16 @@ true AND true
 
 ## Context
 
-TODO
+Rule execution will have access to context variables. These variables are accessed similar to functions via brackets. The context provided is mostly channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attatched. A shortcut to access the current channel values is avaliable via `.current`. The timestamp is an epoc utc timestamp.
+
+Examples:
+
+```javascript
+{.somechannel.value}
+{.somechannel.timestamp}
+{.current.value}
+{.current.timestamp}
+```
 
 ## Functions
 
@@ -135,9 +150,9 @@ isFound - `bool` - weather or not str1 was found in str2.
 #### Example
 
 ```javascript
-{contains(abcd,a)} // true
-{contains(abcd,e)} // false
-{contains(abcd,abc)} // true
+{contains("abcd","a")} // true
+{contains("abcd","e")} // false
+{contains("abcd","abc")} // true
 ```
 
 ### notContains(str1, str2)
@@ -156,9 +171,9 @@ isFound - `bool` - weather or not str1 was found in str2.
 #### Example
 
 ```javascript
-{notContains(abcd,a)} // false
-{notContains(abcd,e)} // true
-{notContains(abcd,abc)} // false
+{notContains("abcd","a")} // false
+{notContains("abcd","e")} // true
+{notContains("abcd","abc")} // false
 ```
 
 ### channelUniqueCount(channelName, lookBackMinutes)
@@ -273,4 +288,27 @@ channelAverage - `float` - the average value of the channel during the time peri
 
 ```javascript
 {channelAverage('numberchannel',525600)} > 1  // true
+```
+
+## Testing
+
+Wilma rules can be tested via the API or the UI. The user will be given the oppurtunity to provide context for the rule. In order to test the node the user will need to reference an existing node with a valid node type. This will be used to provide context for the rule and historical data. The user will need permissions to all referenced resources.
+
+The result will return the following information:
+
+* runTime - `int` - the number of ms the rule took to execute.
+* result - `bool` - the result of the rule execution.
+* errors - `[]string` - any errors produced by the execution.
+* timedout - `bool` - true if the operation timedout.
+
+API:
+
+```
+TODO:
+```
+
+UI:
+
+```
+TODO:
 ```
