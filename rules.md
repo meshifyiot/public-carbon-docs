@@ -332,7 +332,7 @@ Wilma rules can be tested via the API or the UI. The user will be given the oppu
 
 The result will return the following information:
 
-* runTime - `int` - the number of ms the rule took to execute.
+* runtime - `int` - the number of ms the rule took to execute.
 * result - `bool` - the result of the rule execution.
 * errors - `[]string` - any errors produced by the execution.
 * timedout - `bool` - true if the operation timedout.
