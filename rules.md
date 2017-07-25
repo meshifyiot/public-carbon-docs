@@ -1,12 +1,12 @@
 # Rules
 
-Carbon rules allow basic on off for a node state. They are currently executed with will's markup language "Wilma". Rules are intended to be lighter weight then lambdas. Rules must run under 100ms. "Best practice" target is 1ms. We expose several context variables including current channel data values. As well as several functions.
+Carbon rules allow basic on off for a node state. They are currently executed with will's markup language "Wilma". Rules are intended to be lighter weight then lambdas. Rules must run under TODO. "Best practice" target is TODO. We expose context variables and functions to the execution enviorment. All rule functions return a single value and all rule executions must result in true or false. Rules are inteded to be small, simple and only result in a node state change.
 
 When to use a Rule:
-TODO EXAMPLES - compare against a lambda. IE what can I do with a rule vs lambda
+Rules are inteded to be small and simple and result ing a node state change. Simple math, boolean operations and window function calls are allowed but all executions must result in true or false. Best practice is to use a rule when possible. Rules are the cheaper to scale then lambdas.
 
-When to not use a lambda:
-TODO EXAMPLES
+When to not use a Rule:
+When you need variables, complicated formulas/functions or complicated busuness logic. If execution would be much easier to maintain in a lambda then you should use a lambda.
 
 # Table of Contents
 
@@ -47,20 +47,20 @@ true AND true
 * Wilma can use functions. The following example(s) will result with true.
 
 ```javascript
-{min(1,2)} == 1
+min(1,2) == 1
 ```
 
-* Wilma has context variables. The following example(s) will result with true. Assuming the somechannel's value is greater then 0.
+* Wilma has context variables provided. The following example(s) will result with true. Assuming the somechannel's value is greater then 0. You cannot set variables in wilma and if you need this functionality use a lambda.
 
 ```javascript
-{.somechannel.value} > 0
+somevar.value > 0
 ```
 
 * Wilma accepts double or single qoutes. The following example(s) will result with true.
 
 ```javascript
-{contains("somethinng", "s")}
-{contains('somethinng', 's')}
+contains("somethinng", "s")
+contains('somethinng', 's')
 ```
 
 * Wilma depends on spacing to differentiate negative numbers and subtraction operations. Negative numbers must not have a space beween the `-` sign and the number itself. Subtraction operators must have a space between the `-` operator and the opperands.
@@ -76,40 +76,40 @@ true AND true
 
 ```javascript
 1.00 == 1
-{min(1,2)} == 1.0
-{min(1,2)} == 1
+min(1,2) == 1.0
+min(1,2) == 1
 ```
 
 * Wilma keywords, function names and context variables are case insensitive. Best practice: be consistent. The following example(s) will result with true.
 
 ```javascript
-{min(1,2)} == {MIN(1,2)}
-{.numberchannel.value} == {.numberChannel.value}
+min(1,2) == MIN(1,2)
+numberchannel.value == numberChannel.value
 1 == 1 AND 1 == 1 and 1 == 1
 ```
 
 * Wilma can support any combination of these things. The following example(s) will result with true. Assuming the numberchannels value is 1.
 
 ```javascript
-{min(1,2)} == {MIN(1,2)} AND {.numberchannel.value} * 5 == 1 * 5
+min(1,2) == MIN(1,2) AND numberchannel.value * 5 == 1 * 5
 ```
 
 ## Context
 
-Rule execution will have access to context variables. These variables are accessed similar to functions via brackets. The context provided is mostly channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attatched. A shortcut to access the current channel values is avaliable via `.current`. The timestamp is an epoc utc timestamp.
+Rule execution will have access to context variables. These variables are accessed similar to functions via brackets. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attatched. A shortcut to access the current channel values is avaliable via `.current`. The timestamp is an epoc utc timestamp.
 
 Examples:
 
 ```javascript
-{.somechannel.value}
-{.somechannel.timestamp}
-{.current.value}
-{.current.timestamp}
+somechannel.value
+somechannel.timestamp
+current.value
+current.timestamp
 ```
 
 ## Functions
 
-There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function parameters can be used with no qoutes, single or double qoutes. You are permitted to use context variables in function parameters however you are not allowed to use a function calls as a parameter. If there is a use case for this please let us know the exact use case with an example. There are no comments in wilma, comments used in the examples are just for documentation and will need to be removed for execution.
+There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function string parameters can be used with single or double qoutes. You are permitted to use context variables in function parameters however you are not allowed to use a function calls as a parameter. If there is a use case for this please let us know the exact use case with an example. There are no comments in wilma, comments used in the examples are just for documentation and will need to be removed for execution.
 
 ### Functions Available
 
@@ -140,8 +140,8 @@ result - `float` - the minimum value of the two floats provided.
 #### Example
 
 ```javascript
-{min(1,2)} == 1.0 // true
-{min(1,2)} == 2 // false
+min(1,2) == 1.0 // true
+min(1,2) == 2 // false
 ```
 
 ### max(n1, n2)
@@ -160,8 +160,8 @@ result - `float` - the max value of the two floats provided.
 #### Example
 
 ```javascript
-{max(1,2)} == 2.0 // true
-{max(1,2)} == 1 // false
+max(1,2) == 2.0 // true
+max(1,2) == 1 // false
 ```
 
 ### contains(str1, str2)
@@ -180,9 +180,9 @@ isFound - `bool` - weather or not str1 was found in str2.
 #### Example
 
 ```javascript
-{contains("abcd","a")} // true
-{contains("abcd","e")} // false
-{contains("abcd","abc")} // true
+contains("abcd","a") // true
+contains("abcd","e") // false
+contains("abcd","abc") // true
 ```
 
 ### notContains(str1, str2)
@@ -201,9 +201,9 @@ isFound - `bool` - weather or not str1 was found in str2.
 #### Example
 
 ```javascript
-{notContains("abcd","a")} // false
-{notContains("abcd","e")} // true
-{notContains("abcd","abc")} // false
+notContains("abcd","a") // false
+notContains("abcd","e") // true
+notContains("abcd","abc") // false
 ```
 
 ### channelUniqueCount(channelName, lookBackMinutes)
@@ -222,7 +222,7 @@ channelUniqueCount - `int` - the number of unique values for the given channel d
 #### Example
 
 ```javascript
-{channelUniqueCount('numberchannel',525600)} > 1 // true
+channelUniqueCount('numberchannel',525600) > 1 // true
 ```
 
 ### channelCount(channelName, lookBackMinutes)
@@ -241,7 +241,7 @@ channelCount - `int` - the number of values for the given channel during the tim
 #### Example
 
 ```javascript
-{channelCount('numberchannel',525600)} > 1  // true
+channelCount('numberchannel',525600) > 1  // true
 ```
 
 ### channelMax(channelName, lookBackMinutes)
@@ -260,7 +260,7 @@ channelMax - `float` - the max value of the channel during the time period.
 #### Example
 
 ```javascript
-{channelMax('numberchannel',525600)} > 1  // true
+channelMax('numberchannel',525600) > 1  // true
 ```
 
 ### channelMin(channelName, lookBackMinutes)
@@ -279,7 +279,7 @@ channelMin - `float` - the min value of the channel during the time period.
 #### Example
 
 ```javascript
-{channelMin('numberchannel',525600)} < 10000  // true
+channelMin('numberchannel',525600) < 10000  // true
 ```
 
 ### channelSum(channelName, lookBackMinutes)
@@ -298,7 +298,7 @@ channelSum - `float` - the sum of all the values of the channel during the time 
 #### Example
 
 ```javascript
-{channelSum('numberchannel',525600)} > 1  // true
+channelSum('numberchannel',525600) > 1  // true
 ```
 
 ### channelAverage(channelName, lookBackMinutes)
@@ -317,7 +317,13 @@ channelAverage - `float` - the average value of the channel during the time peri
 #### Example
 
 ```javascript
-{channelAverage('numberchannel',525600)} > 1  // true
+channelAverage('numberchannel',525600) > 1  // true
+```
+
+#### Example
+
+```javascript
+channelAverage('numberchannel',525600) > 1  // true
 ```
 
 ## Testing
