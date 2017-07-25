@@ -63,6 +63,13 @@ contains("somethinng", "s")
 contains('somethinng', 's')
 ```
 
+* Wilma functions can call other fucntions or use a context variable. The following example(s) will result with true, Assuming the somechannel's value is 1.
+
+```javascript
+min(2,somechannel.value) == 1
+max(1,max(1,2)) == 2
+```
+
 * Wilma depends on spacing to differentiate negative numbers and subtraction operations. Negative numbers must not have a space beween the `-` sign and the number itself. Subtraction operators must have a space between the `-` operator and the opperands.
 
 ```javascript
@@ -109,7 +116,7 @@ current.timestamp
 
 ## Functions
 
-There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function string parameters can be used with single or double qoutes. You are permitted to use context variables in function parameters however you are not allowed to use a function calls as a parameter. If there is a use case for this please let us know the exact use case with an example. There are no comments in wilma, comments used in the examples are just for documentation and will need to be removed for execution.
+There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function string parameters can be used with single or double qoutes. You are permitted to use context variables or functions as parameters. There are no comments in wilma, comments used in the examples with `//` are just for documentation and will need to be removed for execution.
 
 ### Functions Available
 
