@@ -1,6 +1,6 @@
 # Schedule Formatting
 
-Schedule strings are used in user subscriptions. They are used to define time ranges where notifications are allowed. A schedule is a set of days and time ranges. Schedule strings can contain multiple schedules and multiple time ranges in each schedule.
+Schedule strings are used in user subscriptions. They are used to define time ranges where notifications are allowed. A schedule is a set of days and time ranges. Schedule strings can contain multiple schedules and multiple time ranges in each schedule. When these schedules are consumed in carbon they will be parsed using the user's timezone if that is set. If not the application will default to the local server timezone and finally UTC. 
 
 Example:
 ```
