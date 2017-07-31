@@ -42,7 +42,7 @@ This is an example of accessing a variable.
 
 ## Expressions
 
-Pongo supports basic expressions.
+Pongo supports basic expressions. TODO
 
 ## Filters
 
@@ -153,4 +153,20 @@ Renders
 
 ### Available Tags
 
-## Macros
+* [autoescape](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#autoescape)
+* [block](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#block)
+* [comment](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#comment)
+* [cycle](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#cycle)
+* [filter](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#filter)
+* [firstof](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#firstof)
+* [for](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#for)
+* [if](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#if)
+* [ifchanged](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#ifchanged)
+* [ifequal](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#ifequal)
+* [ifnotequal](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#ifnotequal)
+* [now](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#now)
+* [spaceless](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#spaceless)
+* [set](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#set) // TODO
+* [templatetag](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#templatetag)
+* [widthratio](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#widthratio)
+* [with](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#with)
