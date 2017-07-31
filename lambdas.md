@@ -11,6 +11,19 @@ When you can use a rule. If your lambda is limited OR hard to maintain because o
 Lambdas can be tested here:
 TODO add swagger link or something ?
 
+## Table Of Contents
+
+- [Basics](#basics)
+- [Context](#context)
+- [Functions](#functions)
+    - [daysToSeconds(days)](#daystosecondsdays)
+    - [hoursToSeconds(hours)](#hourstosecondshours)
+    - [log(args ... )](#logargs--)
+    - [getCurrentDataByUniqueId(uniqueId, channelNames)](#getcurrentdatabyuniqueiduniqueid-channelnames)
+    - [getHistoryDataByUniqueId(uniqueId, channelName, start, end)](#gethistorydatabyuniqueiduniqueid-channelname-start-end)
+- [Testing](#testing)
+    - [TestResult{}](#testresult)
+
 ## Basics
 
 * Lambdas functions can currently be written in ES5 javascript.
@@ -40,8 +53,6 @@ if (_.VERSION) {
 ## Context
 
 We have provided some basic message context initially to the lambda. Any additional context will need to be fetched through a provided function.
-
-### ctx
 
 ```javascript
 log(JSON.stringify(ctx))
@@ -218,12 +229,11 @@ log(JSON.stringify(historicalData))
 
 TODO swagger api test link.
 
-Hitting the test endpoing will not trigger any additional side effects. For example calling things like sendAsNodeByUniqueId() will not actually send the resulting message. The messages that would have otherwise been sent will however be in the resulting output. Testing can be done by hitting the API. The result object will contain the following information:
+Hitting the test endpoing will not trigger any additional side effects. For example calling things like sendAsNodeByUniqueId() will not actually send the resulting message. The messages that would have otherwise been sent will however be in the resulting output. Testing can be done by hitting the API. The api will respond with a series of text output sections. Each secion is detailed below.
 
-### TestResult{}
+### Sections
 
-* output - `string[]` - returns an array of output messages from the log() messages. May also contain additional runtime logs including errors and warnings from the .js vm.
-* messages - `messages.ActivateIn[]` - returns an array of messages that would be sent in production.
-* errors - `error[]` - contains runtime errors.
-* timedOut - `bool` - if the lamnbda timedout.
-* runTime - `int` - the runtime in ns.
+* Stats
+* Output
+* Errors
+* Messages Sent
