@@ -166,7 +166,7 @@ Renders
 * [ifnotequal](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#ifnotequal)
 * [now](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#now)
 * [spaceless](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#spaceless)
-* [set](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#set) // TODO
+* set
 * [templatetag](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#templatetag)
 * [widthratio](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#widthratio)
 * [with](https://docs.djangoproject.com/en/1.7/ref/templates/builtins/#with)
