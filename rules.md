@@ -1,12 +1,12 @@
 # Rules
 
-Carbon rules allow basic on off for a node state. They are currently executed with will's markup language "Wilma". Rules are intended to be lighter weight then lambdas. Rules must run under TODO. "Best practice" target is TODO. We expose context variables and functions to the execution enviorment. All rule functions return a single value and all rule executions must result in true or false. Rules are inteded to be small, simple and only result in a node state change.
+Carbon rules allow basic on off for a node state. They are currently executed with will's markup language "Wilma". Rules are intended to be lighter weight then lambdas. Rules must run under TODO. "Best practice" target is TODO. We expose context variables and functions to the execution environment. All rule functions return a single value and all rule executions must result in true or false. Rules are intended to be small, simple and only result in a node state change.
 
 When to use a Rule:
-Rules are inteded to be small and simple and result ing a node state change. Simple math, boolean operations and window function calls are allowed but all executions must result in true or false. Best practice is to use a rule when possible. Rules are the cheaper to scale then lambdas.
+Rules are intended to be small and simple and result ing a node state change. Simple math, boolean operations and window function calls are allowed but all executions must result in true or false. Best practice is to use a rule when possible. Rules are the cheaper to scale then lambdas.
 
 When to not use a Rule:
-When you need variables, complicated formulas/functions or complicated busuness logic. If execution would be much easier to maintain in a lambda then you should use a lambda.
+When you need variables, complicated formulas/functions or complicated business logic. If execution would be much easier to maintain in a lambda then you should use a lambda.
 
 # Table of Contents
 
@@ -56,21 +56,21 @@ min(1,2) == 1
 somevar.value > 0
 ```
 
-* Wilma accepts double or single qoutes. The following example(s) will result with true.
+* Wilma accepts double or single quotes. The following example(s) will result with true.
 
 ```javascript
 contains("somethinng", "s")
 contains('somethinng', 's')
 ```
 
-* Wilma functions can call other fucntions or use a context variable. The following example(s) will result with true, Assuming the somechannel's value is 1.
+* Wilma functions can call other functions or use a context variable. The following example(s) will result with true, Assuming the somechannel's value is 1.
 
 ```javascript
 min(2,somechannel.value) == 1
 max(1,max(1,2)) == 2
 ```
 
-* Wilma depends on spacing to differentiate negative numbers and subtraction operations. Negative numbers must not have a space beween the `-` sign and the number itself. Subtraction operators must have a space between the `-` operator and the opperands.
+* Wilma depends on spacing to differentiate negative numbers and subtraction operations. Negative numbers must not have a space between the `-` sign and the number itself. Subtraction operators must have a space between the `-` operator and the operands.
 
 ```javascript
 1 - 1 == 0  // true
@@ -103,7 +103,7 @@ min(1,2) == MIN(1,2) AND numberchannel.value * 5 == 1 * 5
 
 ## Context
 
-Rule execution will have access to context variables. These variables are accessed similar to functions via brackets. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attatched. A shortcut to access the current channel values is avaliable via `.current`. The timestamp is an epoc utc timestamp.
+Rule execution will have access to context variables. These variables are accessed similar to functions via brackets. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attached. A shortcut to access the current channel values is available via `.current`. The timestamp is an epoc utc timestamp.
 
 Examples:
 
@@ -116,7 +116,7 @@ current.timestamp
 
 ## Functions
 
-There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function string parameters can be used with single or double qoutes. You are permitted to use context variables or functions as parameters. There are no comments in wilma, comments used in the examples with `//` are just for documentation and will need to be removed for execution.
+There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function string parameters can be used with single or double quotes. You are permitted to use context variables or functions as parameters. There are no comments in wilma, comments used in the examples with `//` are just for documentation and will need to be removed for execution.
 
 ### Functions Available
 
@@ -133,7 +133,7 @@ There are several functions that are exposed to the rule execution engine. Gener
 
 ## min(n1, n2)
 
-Returns the minumim of the two numbers.
+Returns the minimum of the two numbers.
 
 #### Params
 
@@ -182,7 +182,7 @@ Returns true if str2 is found present in str1.
 
 #### Returns
 
-isFound - `bool` - weather or not str1 was found in str2.
+isFound - `bool` - whether or not str1 was found in str2.
 
 #### Example
 
@@ -203,7 +203,7 @@ Returns true if str2 is not found present in str1.
 
 #### Returns
 
-isFound - `bool` - weather or not str1 was found in str2.
+isFound - `bool` - whether or not str1 was found in str2.
 
 #### Example
 
@@ -335,14 +335,14 @@ channelAverage('numberchannel',525600) > 1  // true
 
 ## Testing
 
-Wilma rules can be tested via the API or the UI. The user will be given the oppurtunity to provide context for the rule. In order to test the node the user will need to reference an existing node with a valid node type. This will be used to provide context for the rule and historical data. The user will need permissions to all referenced resources.
+Wilma rules can be tested via the API or the UI. The user will be given the opportunity to provide context for the rule. In order to test the node the user will need to reference an existing node with a valid node type. This will be used to provide context for the rule and historical data. The user will need permissions to all referenced resources.
 
 The result will return the following information:
 
 * runtime - `int` - the number of ms the rule took to execute.
 * result - `bool` - the result of the rule execution.
 * errors - `[]string` - any errors produced by the execution.
-* timedout - `bool` - true if the operation timedout.
+* timedout - `bool` - true if the operation timed out.
 
 API:
 

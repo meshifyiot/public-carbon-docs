@@ -1,6 +1,6 @@
 # Schedule Formatting
 
-Schedule strings are used in user subscriptions. They are used to define time ranges where notifications are allowed. A schedule is a set of days and time ranges. Schedule strings can contain multiple schedules and multiple time ranges in each schedule. When these schedules are consumed in carbon they will be parsed using the user's timezone if that is set. If not the application will default to the local server timezone and finally UTC.
+Schedule strings are used in user subscriptions. They are used to define time ranges where notifications are allowed. A schedule is a set of days and time ranges. Schedule strings can contain multiple schedules and multiple time ranges in each schedule. When these schedules are consumed in carbon they will be parsed using the user's timezone if that is set. If not the application will default to the local server timezone and finally UTC. 
 
 Example:
 ```
@@ -14,7 +14,7 @@ Each schedule is delimited by `;` so we have two schedules in this string.
 1|8:00 - 17:00
 ```
 
-Each schedule has a days section and a time range section delimited by `|`. This section will contain numbers `0` through `6` representing each day starting with Sunday respectivily. In the first schedule of the example the days section is defined as:
+Each schedule has a days section and a time range section delimited by `|`. This section will contain numbers `0` through `6` representing each day starting with Sunday respectively. In the first schedule of the example the days section is defined as:
 
 ```
 06
