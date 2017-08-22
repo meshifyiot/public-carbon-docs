@@ -8,7 +8,7 @@
   - [Reactions](/concepts/reactions.md)
   - [Rules](/concepts/rules.md)
   - [Schedules](/concepts/schedules.md)
-- [Api](/api)
+- [Api](http://carbon-docs.meshify.com)
 - [Overview](#Overview)
 
 ## Overview
