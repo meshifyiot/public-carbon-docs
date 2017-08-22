@@ -286,3 +286,8 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+
+#jekyll 
+_site/
+.sass-cache/
+.jekyll-metadata

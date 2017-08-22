@@ -139,7 +139,7 @@ TODO
 
 ## Tags
 
-Tags look like this: `{% tag %}`. Tags are more complex than variables: Some create text in the output, some control flow by performing loops or logic, and some load external information into the template to be used by later variables. Some tags require beginning and ending tags (i.e. `{% tag %} ... tag contents ... {% endtag %}`).
+Tags look like this:{% raw  %} `{% tag %}` {% endraw %}. Tags are more complex than variables: Some create text in the output, some control flow by performing loops or logic, and some load external information into the template to be used by later variables. Some tags require beginning and ending tags (i.e. `{% raw %} {% tag %} {% endraw %} ... tag contents ... {% raw  %} {% tag %} {% endraw %}`).
 
 ### Common Examples
 
