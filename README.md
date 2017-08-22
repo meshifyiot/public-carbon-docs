@@ -1,8 +1,7 @@
-# carbon-docs
+# Carbon
 
-Carbon documentation and cookbook
-
-## See individual files for more info
-
-
-
+### Table of Contents
+- [Concepts](/concepts)
+  - [General](/concepts/general.md)
+- [Visualization](#visualization)
+- [People](#people)
