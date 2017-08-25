@@ -49,4 +49,4 @@ n/a
 
 ### Available Tags (Charting, Sets, etc.)
 
-n/a
+- [<mf-charts>](/dashboard/chart.md)
