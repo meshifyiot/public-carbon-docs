@@ -16,12 +16,12 @@ This is an example of accessing a variable.
 
 ```javascript
 // TODO 
-	rec := map[string]interface{}{
-		"firstName":            subsciption.FirstName,
-		"lastName":             subsciption.LastName,
-		"phone":                subsciption.Phone,
-		"email":                subsciption.Email,
-		"notificationSchedule": subsciption.Schedule,
+		rec := map[string]interface{}{
+		"firstName":            subscription.FirstName,
+		"lastName":             subscription.LastName,
+		"phone":                subscription.Phone,
+		"email":                subscription.Email,
+		"notificationSchedule": subscription.Schedule,
 	}
 
 	m := map[string]interface{}{
@@ -35,9 +35,16 @@ This is an example of accessing a variable.
 		"reactionId":  reaction.ID,
 	}
 
+	nodeInfo := map[string]interface{}{
+		"uniqueId":   nodeContext.UniqueID,
+		"vanityName": nodeContext.VanityName,
+	}
+
 	return map[string]interface{}{
 		"ctx":       m,
 		"recipient": rec,
+		"node":      nodeInfo,
+	}
 ```
 
 ## Expressions
