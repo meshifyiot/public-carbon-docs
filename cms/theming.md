@@ -90,7 +90,7 @@ And we were getting the Theme for an User in Folder C, we would receive:
 
 ### Sharing the Theme Object
 
-An interesting issue that comes about when using this Theme object across multiple cores
+An interesting issue that comes about when using the Theme object across multiple cores
 is that one needs to pay particular attention to what they want to share and what they want to
 separate.
 
