@@ -88,3 +88,25 @@ And we were getting the Theme for an User in Folder C, we would receive:
 }
 ```
 
+### Sharing the Theme Object
+
+An interesting issue that comes about when using this Theme object across multiple cores
+is that one needs to pay particular attention to what they want to share and what they want to
+separate.
+
+Our general recommendation is that each core have its own "keyspace". So if you have 3 cores:
+Dashboard, Admin, and Activate; we would recommend a Theme JSON structure such as:
+
+```
+{
+    "admin": {
+        "key": "value"
+    },
+    "dashboard": {
+        "key": "value"
+    },
+    "activate": {
+        "key": "value"
+    }
+}
+```
