@@ -29,6 +29,11 @@ The time range section describes the time ranges for the schedule. The times mus
 12:00 - 14:00, 15:30 - 16:00
 ```
 
-This indicates that times are allowed from noon to 2 PM and 3:30 PM to 4 PM.
+This indicates that times are allowed from noon to 2 PM and 3:30 PM to 4 PM. NOTE the start time must be before the end time - the time range cannot jump over midnight. `23:00-6:00` would be considered invalid.
 
 In summary the example schedule indicates Sunday and Saturday from noon to 2 PM, and 3:30 PM to 4:00 PM, and Monday from 8:00 AM to 5:00 PM.
+
+
+## Regarding precision
+
+The schedule is not second precision, therefore reaction timestamps seconds are truncated and the time comparison is inclusive. Given a schedule `0123456|12:00-23:59` - if a reaction occurred at `23:59:45`, the reaction would still fire. The seconds would be truncated resulting in `23:59:00` and due to the inclusive (<=,>=) nature of the comparison would still be triggered. However given the same schedule a timestamp of `11:59:45` would not be triggered.
