@@ -1,9 +1,12 @@
-Before you open an issue or feature request, please check if a similar issue already exists or has been closed before.
+### Before you open a ticket
 
-### When reporting a software bug, please be sure to include the following:
-- [ ] What URL are you accessing carbon through
+- use the Issue search feature to check for a related issue that is open or already closed
+- gather as much detail about the issue or feature request as possible (see below)
+
+### Bug reports: what to include
 - [ ] A descriptive title
-- [ ] An way to reproduce the behavior with related details
+- [ ] Your Meshify Carbon domain name (carbon.meshify.com)
+- [ ] A way to reproduce the behavior with necessary details
 - - [ ] affected node type id(s)
 - - [ ] affected node id(s)
 - - [ ] affected rule id(s)
@@ -12,9 +15,12 @@ Before you open an issue or feature request, please check if a similar issue alr
 - - [ ] affected reaction id(s)
 - - [ ] affected user id(s)
 - [ ] The behavior you expect to see, and the actual behavior
+- [ ] Screenshots or output
 
-### When you open an issue for a feature request, please add as much detail as possible:
+### Feature requests: what to include
 - [ ] A descriptive title
-- [ ] A description of the problem you're trying to solve, including *why* you think this is a problem
-- [ ] An overview of the suggested solution
-- [ ] If the feature changes current behavior, reasons why your solution is better
+- [ ] A description of the problem you're trying to solve
+- [ ] Why you think this is a problem
+- [ ] Your desired outcome
+- [ ] Current behavior screenshots or output
+- [ ] Desired behavior screenshots, output, or sketches
