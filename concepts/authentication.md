@@ -37,7 +37,7 @@ The auth header value template is `Basic base64encode(userEmail + ':' + password
 ```javascript
 var userEmail = 'somebody@example.com'
 var password = `sooper sekrat`
-var authValue = `UserToken ` + b64EncodeUnicode(userEmail + ':' + password)
+var authValue = `Basic ` + b64EncodeUnicode(userEmail + ':' + password)
 console.log(authValue) // TODO
 ```
 
