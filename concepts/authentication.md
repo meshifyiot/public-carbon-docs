@@ -5,7 +5,7 @@ There are a few different ways to authenticate via the API. User Membership (use
 |                                | UI access via GET /api/login | API Access | Generated |
 |--------------------------------|------------------------------|------------|------------|
 | Membership (email, password)   |:heavy_check_mark:|:x:|:x:|
-| User Token (access id, secret) |:heavy_check_mark::x:| :x:|
+| User Token (access id, secret) |:heavy_check_mark:|:x:| :x:|
 | API Key (key)                  |:x:|:heavy_check_mark:|:heavy_check_mark:
 
 
