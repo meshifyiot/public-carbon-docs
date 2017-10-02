@@ -38,7 +38,7 @@ The auth header value template is `Basic base64encode(userEmail + ':' + password
 var userEmail = 'somebody@example.com'
 var password = `sooper sekrat`
 var authValue = `Basic ` + b64EncodeUnicode(userEmail + ':' + password)
-console.log(authValue) // TODO
+console.log(authValue) // Basic c29tZWJvZHlAZXhhbXBsZS5jb206c29vcGVyIHNla3JhdA==
 ```
 
 ### UserToken
@@ -49,7 +49,7 @@ The auth header value template is `UserToken base64encode(accessId + ':' + secre
 var accessId = '123456789'
 var secret = `sooper sekrat`
 var authValue = `UserToken ` + b64EncodeUnicode(accessId + ':' + secret)
-console.log(authValue) // TODO
+console.log(authValue) // UserToken MTIzNDU2Nzg5OnNvb3BlciBzZWtyYXQ=
 ```
 
 ### Api Key
@@ -59,7 +59,7 @@ The auth header value template is `Bearer base64encode(apiKey)`
 ```javascript
 var apiKey = '123456789'
 var authValue = `Bearer ` + b64EncodeUnicode(apiKey)
-console.log(authValue) // TODO
+console.log(authValue) // Bearer MTIzNDU2Nzg5DO
 ```
 
 ## Notes About Enabling Authentication For Users
