@@ -55,7 +55,7 @@ if (_.VERSION) {
 We have provided some basic message context initially to the lambda. Any additional context will need to be fetched through a provided function.
 
 ```javascript
-log(JSON.stringify(ctx))
+log(JSON.stringify(ctx, null, 2))
 /*
 {
     "channelName": "tempchannel",
@@ -127,7 +127,7 @@ var someObject = {
     someProperty: 1
 }
 log(someObject) // [object Object]
-log(JSON.stringify(someObject)) // {"someProperty":1}
+log(JSON.stringify(someObject, null, 2)) // {"someProperty":1}
 ```
 
 ### sendAsNodeByUniqueId(uniqueId, channelName, value, nodeTypeName, parentUniqueId)
@@ -173,7 +173,7 @@ currentData - `object` - returns an object with each property being a channel na
 
 ```javascript
 var currentData = getCurrentDataByUniqueId('00:00:00:00:00', ['tempchannel'])
-log(JSON.stringify(currentData))
+log(JSON.stringify(currentData, null, 2))
 /*
 {
    "tempchannel":{
@@ -205,7 +205,7 @@ historicalData - `datapoint[]` - returns an array of datapoints. They are sorted
 var start = Date.now() / 1000
 var end = Date.now() / 1000 - daysToSeconds(900)
 var historicalData = getHistoryDataByUniqueId('00:00:00:00:00', 'tempchannel', start, end)
-log(JSON.stringify(historicalData))
+log(JSON.stringify(historicalData, null, 2))
 /*
 [
     {
