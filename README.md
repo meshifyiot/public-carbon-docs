@@ -4,6 +4,7 @@
 
 - [Concepts](/concepts)
   - [General](/concepts/general.md)
+  - [Authentication](/concepts/authentication.md)
   - [Lambdas](/concepts/lambdas.md)
   - [Reactions](/concepts/reactions.md)
   - [Rules](/concepts/rules.md)
