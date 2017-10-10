@@ -9,6 +9,7 @@
   - [Reactions](/concepts/reactions.md)
   - [Rules](/concepts/rules.md)
   - [Schedules](/concepts/schedules.md)
+  - [Email Templates](/concepts/emailtemplates.md)
 - CMS
   - [Templates](/cms/templates.md)
   - [Chart](/cms/chart.md)

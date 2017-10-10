@@ -1,6 +1,8 @@
-# Templates
+# Reactions
 
-Templates are primary used for reaction emails and sms notifications. The templating engine in use is called [pongo2](https://github.com/flosch/pongo2), which is a port of Django 1.7 template engine. Please note django documentation was used and is referenced in here. When browsing django template documentation please note that this is only for v1.7. Message context has also been provided.
+## Templates
+
+Templates are primarily used for reaction emails and sms notifications. The templating engine in use is called [pongo2](https://github.com/flosch/pongo2), which is a port of Django 1.7 template engine. Please note django documentation was used and is referenced in here. When browsing django template documentation please note that this is only for v1.7. Message context has also been provided.
 
 ## Quick Start
 
