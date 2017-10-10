@@ -14,7 +14,7 @@ These are accessible for you to edit at:
 - `PUT /api/emailtemplates/users-invite` ()
 - `PUT /api/emailtemplates/users-reset` (Forgot Password API)
 
-You can also GET, DELETE, or GET `/test` the Email Templates. GET will show you the current contents, while DELETE will delete the template and reset it to the [defaults below](#defaulttemplates). `GET /api/emailtemplates/users-invite/test` will test the current contents of the email template with the current user and some dummy data.
+You can also GET, DELETE, or GET `/test` the Email Templates. GET will show you the current contents, while DELETE will delete the template and reset it to the [defaults below](#default-templates). `GET /api/emailtemplates/users-invite/test` will test the current contents of the email template with the current user and some dummy data.
 
 ## Templating
 
