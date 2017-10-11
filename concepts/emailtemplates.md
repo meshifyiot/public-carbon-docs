@@ -26,6 +26,8 @@ The Users-Reset template currently provide access to these context variables:
 - URL (generate URL for use in the Meshify Admin Core)
 - Token (reset token)
 - Theme (theme object for User)
+- Proto (http or https)
+- Domain (i.e. carbon.meshify.com)
 
 The Users-Invite template currently provide access to these context variables:
 
@@ -33,6 +35,8 @@ The Users-Invite template currently provide access to these context variables:
 - URL (generate URL for use in the Meshify Admin Core)
 - Token (reset token)
 - Theme (theme object for User)
+- Proto (http or https)
+- Domain (i.e. carbon.meshify.com)
 
 ## Default Templates
 

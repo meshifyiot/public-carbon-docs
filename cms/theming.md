@@ -8,7 +8,7 @@ For general customization, such as:
 - altering text
 
 We provide a generic Theme object (much like the metadata object) attached to
-Domains and Folders.
+Domains, Applications, and Folders.
 
 Values provided in this object need to be specifically requested and used within each
 Core for them to have any effect.
@@ -33,9 +33,11 @@ a script tag to the index.html like so:
 This will add the current BasePath to the window, as well as adding the theme object in Javascript syntax
 to the window. This will allow you to use any values within the theme to apply changes in the Core.
 
-Once there is an authenticated User, we can grab the Theme based on the current users Folder context. This works
-by taking the original Domain.Theme and overwriting any keys within that by going down the entire Folder chain.
-So if there was a Domain with Theme:
+The theme added in this manner will take on the Domain.Theme overwitten by the Application.Theme (based on the path).
+
+Once there is an authenticated User, we can grab the Theme based on the current user's Folder context. This works
+by taking the root Folder.Theme and overwriting any keys within that by going down the entire Folder chain.
+So if there was a Folder `A` with Theme:
 
 ```
 {
@@ -61,13 +63,9 @@ A
 And we had the following themes:
 
 ```
-For A:
-{
-    "logoUrl": "https://domain.com/images/logo.png"
-}
-
 For B:
 {
+    "logoUrl": "https://domain.com/images/logo.png",
     "titleText": "Company B Core"
 }
 
