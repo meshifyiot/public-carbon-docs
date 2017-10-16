@@ -18,7 +18,7 @@ This is an example of accessing a variable.
 
 ```javascript
 // TODO 
-		rec := map[string]interface{}{
+	rec := map[string]interface{}{
 		"firstName":            subscription.FirstName,
 		"lastName":             subscription.LastName,
 		"phone":                subscription.Phone,

@@ -335,7 +335,7 @@ channelAverage('numberchannel',525600) > 1  // true
 
 ## Testing
 
-Wilma rules can be tested via the API or the UI. The user will be given the opportunity to provide context for the rule. In order to test the node the user will need to reference an existing node with a valid node type. This will be used to provide context for the rule and historical data. The user will need permissions to all referenced resources.
+Wilma rules can be tested via the API or the UI. The user will be given the opportunity to provide context for the rule. In order to test the rule the user will need to reference an existing node with a valid node type. This will be used to provide context for the rule and historical data. The user will need permissions to all referenced resources.
 
 The result will return the following information:
 
