@@ -116,7 +116,7 @@ current.timestamp
 
 ## Cron & Debounce Timers
 
-There are two types of timers that can affect rule execution, as denoted by the cron and debounce fields in the Rules edit UI. The cron timer determines whether the current rule should run as a cron job (cron time in minutes). This can be set to 0 for real-time rule, or between 30 and 10080 minutes for a cron rule. The debounce timer can be set between 0 and 60, and will wait that number of seconds after a positive rule result to react to the rule, and cancel the result if the rule evaluates to false during the wait period. Setting the debounce field to 0 results in no debounce.
+There are two types of timers that can affect rule execution, as denoted by the cron and debounce fields in the Rules edit UI. The cron timer determines whether the current rule should run as a cron job (cron time in minutes). This can be set to 0 for a real-time rule, or between 30 and 10080 minutes for a cron rule. The debounce timer can be set between 0 and 60, and will wait that number of seconds after a positive rule result to react to the rule, and cancel the result if the rule evaluates to false during the wait period. Setting the debounce field to 0 results in no debounce.
 
 #### Limits
 
