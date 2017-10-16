@@ -114,6 +114,17 @@ current.value
 current.timestamp
 ```
 
+## Cron & Debounce Timers
+
+There are two types of timers that can affect rule execution, as denoted by the cron and debounce fields in the Rules edit UI. The cron timer determines whether the current rule should run as a cron job (cron time in minutes). This can be set to 0 for real-time rule, or between 30 and 10080 minutes for a cron rule. The debounce timer can be set between 0 and 60, and will wait that number of seconds after a positive rule result to react to the rule, and cancel the result if the rule evaluates to false during the wait period. Setting the debounce field to 0 results in no debounce.
+
+#### Limits
+
+```javascript
+cronTime => 0 OR 30 - 10080 (minutes)
+debounceTime => 0 - 60 (seconds)
+```
+
 ## Functions
 
 There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function string parameters can be used with single or double quotes. You are permitted to use context variables or functions as parameters. There are no comments in wilma, comments used in the examples with `//` are just for documentation and will need to be removed for execution.
@@ -131,7 +142,7 @@ There are several functions that are exposed to the rule execution engine. Gener
 - [channelSum(channelName, lookBackMinutes)](#channelsumchannelname-lookbackminutes)
 - [channelAverage(channelName, lookBackMinutes)](#channelaveragechannelname-lookbackminutes)
 
-## min(n1, n2)
+### min(n1, n2)
 
 Returns the minimum of the two numbers.
 
