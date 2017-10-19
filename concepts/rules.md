@@ -1,12 +1,18 @@
 # Rules
 
-Carbon rules allow basic on off for a node state. They are currently executed with will's markup language "Wilma". Rules are intended to be lighter weight then lambdas. Rules must run under TODO. "Best practice" target is TODO. We expose context variables and functions to the execution environment. All rule functions return a single value and all rule executions must result in true or false. Rules are intended to be small, simple and only result in a node state change.
+Carbon rules allow basic on/off for a node state. All rule conditions must return a single value: true or false. 
 
-When to use a Rule:
-Rules are intended to be small and simple and result ing a node state change. Simple math, boolean operations and window function calls are allowed but all executions must result in true or false. Best practice is to use a rule when possible. Rules are the cheaper to scale then lambdas.
+Simple examples of Rules include:
 
-When to not use a Rule:
-When you need variables, complicated formulas/functions or complicated business logic. If execution would be much easier to maintain in a lambda then you should use a lambda.
+- *if temperature is greater than 100 degrees*
+- *if battery life is less than 10*
+- *if the average value of a channel is greater than some number*
+
+**When to use a Rule**  
+Rules are intended to be small and simple and result in a node state change. Simple math, boolean operations and window function calls are allowed, but all executions must result in true or false. When possible, always use a Rule for changing node state, as they're much cheaper to scale than lambdas.
+
+**When to not use a Rule**  
+When you need custom variables, complicated formulas/functions or complicated business logic, you're better off using a lambda. 
 
 # Table of Contents
 
@@ -26,6 +32,8 @@ When you need variables, complicated formulas/functions or complicated business 
 - [Testing](#testing)
 
 ## Basics
+
+Rules conditions are executed with a markup language called "Wilma," which has a simple syntax described below. 
 
 * Wilma can evaluate basic math, comparison operators, and follows order of operations. The following example(s) will result with true.
 
@@ -50,7 +58,7 @@ true AND true
 min(1,2) == 1
 ```
 
-* Wilma has context variables provided. The following example(s) will result with true. Assuming the somechannel's value is greater then 0. You cannot set variables in wilma and if you need this functionality use a lambda.
+* Wilma has context variables provided. The following example will result with true, assuming the somechannel's value is greater then 0. (You cannot set custom variables in wilma. If you need this functionality, you're better off using a lambda.)
 
 ```javascript
 somevar.value > 0
@@ -63,7 +71,7 @@ contains("somethinng", "s")
 contains('somethinng', 's')
 ```
 
-* Wilma functions can call other functions or use a context variable. The following example(s) will result with true, Assuming the somechannel's value is 1.
+* Wilma functions can call other functions or use a context variable. The following example(s) will result with true, assuming the somechannel's value is 1.
 
 ```javascript
 min(2,somechannel.value) == 1
@@ -95,7 +103,7 @@ numberchannel.value == numberChannel.value
 1 == 1 AND 1 == 1 and 1 == 1
 ```
 
-* Wilma can support any combination of these things. The following example(s) will result with true. Assuming the numberchannels value is 1.
+* Wilma can support any combination of the above operations. The following example will result with true, assuming the value of 'numberchannel' is 1.
 
 ```javascript
 min(1,2) == MIN(1,2) AND numberchannel.value * 5 == 1 * 5
@@ -103,7 +111,7 @@ min(1,2) == MIN(1,2) AND numberchannel.value * 5 == 1 * 5
 
 ## Context
 
-Rule execution will have access to context variables. These variables are accessed similar to functions via brackets. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attached. A shortcut to access the current channel values is available via `.current`. The timestamp is an epoc utc timestamp.
+Rules are executed with context variables. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attached. A shortcut to access the current channel values is available via `.current`. The timestamp is an epoch UTC timestamp.
 
 Examples:
 
@@ -127,7 +135,7 @@ debounceTime => 0 - 60 (seconds)
 
 ## Functions
 
-There are several functions that are exposed to the rule execution engine. Generally speaking there are two types of functions exposed to the engine - utility helper functions and carbon centric window functions. Function string parameters can be used with single or double quotes. You are permitted to use context variables or functions as parameters. There are no comments in wilma, comments used in the examples with `//` are just for documentation and will need to be removed for execution.
+There are several functions that are exposed to the rule execution engine. Generally speaking, these functions fall into two categories: utility helper functions and Carbon-centric window functions. Function string parameters can be used with single or double quotes. You are permitted to use context variables or functions as parameters. **There are no comments in wilma** &mdash; comments used in the examples below with `//` are just for documentation and will need to be removed for execution.
 
 ### Functions Available
 
@@ -345,6 +353,8 @@ channelAverage('numberchannel',525600) > 1  // true
 ```
 
 ## Testing
+
+*Coming soon.*
 
 Wilma rules can be tested via the API or the UI. The user will be given the opportunity to provide context for the rule. In order to test the rule the user will need to reference an existing node with a valid node type. This will be used to provide context for the rule and historical data. The user will need permissions to all referenced resources.
 
