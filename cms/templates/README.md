@@ -34,32 +34,32 @@ You also have access to key information about the node, passed in as a Riot.js '
 
 ```javascript
 
-	alarms: [],
-	channels: {
-		temp: {
-			value: 100,
-			timestamp: "2017-01-01T00:00:01Z",
-			vanityName: "temperature"
-		},
-		...
+alarms: [],
+channels: {
+	temp: {
+		value: 100,
+		timestamp: "2017-01-01T00:00:01Z",
+		vanityName: "temperature"
 	},
-	icon: {
-		name: "Default",
-		level: 0,
-		shape: "circle",
-		color: "green"
-	},
-	id: 0,
-	location: {
-		lat: 0,
-		lng: 0
-	},
-	metadata: {},
-	parentNodeId: 0,
-	tags: [],
-	uniqueId: "00:00:00:00",
-	updatedAt: "2017-09-22T16:12:26.967Z"
-	vanity: "Node Name"
+	...
+},
+icon: {
+	name: "Default",
+	level: 0,
+	shape: "circle",
+	color: "green"
+},
+id: 0,
+location: {
+	lat: 0,
+	lng: 0
+},
+metadata: {},
+parentNodeId: 0,
+tags: [],
+uniqueId: "00:00:00:00",
+updatedAt: "2017-09-22T16:12:26.967Z"
+vanity: "Node Name"
 
 ```
 *All properties are accessible at opts.node. Example: opts.node.channels.temp.value.*
@@ -70,19 +70,19 @@ Here's an example of a sample detail template, which outputs all of the channel 
 
 ```javascript
 
-	<sample-template>
+<sample-template>
 
-		<div each={ channel_name, point in opts.node.channels }>
-			<h2>{ point.vanityName }</h2>
-			<p>{ point.value }</p>
-			<time>{ moment(point.timestamp).format('MMMM Do YYYY, h:mm:ss a') }</time>
-		</div>
+	<div each={ channel_name, point in opts.node.channels }>
+		<h2>{ point.vanityName }</h2>
+		<p>{ point.value }</p>
+		<time>{ moment(point.timestamp).format('MMMM Do YYYY, h:mm:ss a') }</time>
+	</div>
 
-	</sample-template>
+</sample-template>
 
-	<script>
-		var tag = this;
-	</script>
+<script>
+	var tag = this;
+</script>
 
 ```
 
