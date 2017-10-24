@@ -1,4 +1,4 @@
-## Node Type Template Charts
+## Node Type Templates: Line Chart
 
 ### Introduction
 
@@ -55,10 +55,6 @@ By passing in an array of channel objects, you can fine-tune the way the chart v
 - color: The HTML/CSS color used to render the data, labels, etc.
 
 All of these properties except 'name' are optional, with strong defaults.
-
-The chart from the example above looks like this:
-
-(img)
 
 The `<mf-chart>` tag has several customizable options that you can pass into the tag. Here is the full list of properties.
 

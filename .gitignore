@@ -293,3 +293,5 @@ _site/
 .jekyll-metadata
 
 node_modules/
+
+.DS_Store
