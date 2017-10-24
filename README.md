@@ -10,7 +10,7 @@
   - [Rules](/concepts/rules.md)
   - [Schedules](/concepts/schedules.md)
   - [Email Templates](/concepts/emailtemplates.md)
-- CMS
+- [CMS](/cms)
   - [Node Type Templates](/cms/templates)
   	- [Line Charts](/cms/templates/line-chart.md)
   - [Theming](/cms/theming.md)
