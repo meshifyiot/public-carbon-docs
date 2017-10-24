@@ -11,8 +11,8 @@
   - [Schedules](/concepts/schedules.md)
   - [Email Templates](/concepts/emailtemplates.md)
 - CMS
-  - [Templates](/cms/templates.md)
-  - [Chart](/cms/chart.md)
+  - [Node Type Templates](/cms/templates)
+  	- [Line Charts](/cms/templates/line-chart.md)
   - [Theming](/cms/theming.md)
 - [Api](http://carbon-docs.meshify.com)
 - [Overview](#Overview)

@@ -2,8 +2,8 @@
 
 ## Table Of Contents
 
-- [Charting](./chart.md)
-- [Templates](./templates.md)
+- [Node Type Templates](./templates)
+	- [Line Chart](./templates/line-chart.md)
 - [Theming](./theming.md)
 
 ## Basics
