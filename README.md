@@ -12,7 +12,7 @@
   - [Email Templates](/concepts/emailtemplates.md)
 - [CMS](/cms)
   - [Node Type Templates](/cms/templates)
-  	- [Line Charts](/cms/templates/line-chart.md)
+  	- [Line Chart](/cms/templates/line-chart.md)
   - [Theming](/cms/theming.md)
 - [Api](http://carbon-docs.meshify.com)
 - [Overview](#Overview)
