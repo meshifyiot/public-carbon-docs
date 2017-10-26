@@ -72,17 +72,18 @@ Here's an example of a sample detail template, which outputs all of the channel 
 
 <sample-template>
 
-	<div each={ channel_name, point in opts.node.channels }>
+	<div each={ point, channel_name in opts.node.channels }>
 		<h2>{ point.vanityName }</h2>
 		<p>{ point.value }</p>
 		<time>{ moment(point.timestamp).format('MMMM Do YYYY, h:mm:ss a') }</time>
 	</div>
 
+	<script>
+		var tag = this;
+	</script>
+
 </sample-template>
 
-<script>
-	var tag = this;
-</script>
 
 ```
 
