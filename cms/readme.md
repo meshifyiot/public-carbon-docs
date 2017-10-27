@@ -14,9 +14,10 @@ a Meshify UI to their liking.
 
 It consists of the following entities:
 
-- Domain
-- Application
-- Core
+- Domains
+- Applications
+- Cores
+- Files
 
 ### Domain
 
@@ -62,3 +63,14 @@ A Core is the heart of a UI application. It consists of files in a folder and wo
 
 A Core enables Theming through its own Javascript code, and Core files are what the server delivers to you when 
 you go to a Meshify Site in the browser (i.e. https://carbon.meshify.com).
+
+### Files 
+
+Files can be public or private and are any file you will eventually need access to. These can be logos, json and configuration files, or other things you would like to reference from the CMS. 
+
+This is not a good place to store data: videos, tons of images, or other things. It is meant to be used for branding and CMS related files.
+
+A file can be public or private based on which API route you use to upload it:
+
+- `PUT /api/files/private`
+- `PUT /api/files/public`
