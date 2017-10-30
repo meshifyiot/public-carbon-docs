@@ -11,6 +11,7 @@
   - [Rules](/concepts/rules.md)
   - [Schedules](/concepts/schedules.md)
   - [Email Templates](/concepts/emailtemplates.md)
+  - [MQTT](/concepts/mqtt.md)
 - [CMS](/cms)
   - [Node Type Templates](/cms/templates)
   	- [Line Chart](/cms/templates/line-chart.md)
