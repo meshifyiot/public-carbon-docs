@@ -50,6 +50,15 @@ What we would do is use `/api/aliaschannels` to create a link from the "house" N
 
 What you've now done is created an aggregation of 3 different "tempsensor"s that gives your users a much better contextual representation of what they are trying to represent. This also allows you to more easily do cross-Node Rules and Lambdas, so that you could trigger an alert based on the temperature difference in two rooms.
 
+#### Alias Channel Validation
+
+Alias channels have a few rules that must be followed: 
+
+* Alias channels must be defined in the schema with an `alias:` type.
+* A channel with the `alias:` type cannot be the source of another alias channel.
+* Alias channels are not allowed to have overlapping start/end times. 
+* There can only be one transition within a 24 hour period. 
+
 ### Auto-Activation Config
 
 TBD
