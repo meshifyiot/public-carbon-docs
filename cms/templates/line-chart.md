@@ -84,6 +84,14 @@ A string for the label that appears at the very top of the chart.
 
 ---
 
+**sampling**
+
+A boolean string. By default, Highstocks samples data values into larger blocks to increase chart readability and performance. Data points that are close to one another (measured in pixels) are grouped and averaged, but will separate into individual points when you zoom into the chart. 
+
+*Defaults to true.*
+
+---
+
 **simple**
 
 A boolean string. Simple mode strips out a lot of the accessory UI elements and offers a simple chart with a legend, the data points, and little else. It's ideal for list templates, where vertical space is limited.
