@@ -6,52 +6,207 @@ Templates are primarily used for reaction emails and sms notifications. The temp
 
 ## Quick Start
 
-TODO
+Example template:
+
+```
+
+```
 
 ## Context
 
-This is an example of accessing a variable.
-
-```
-{{ rec }}
-```
+This is an example of accessing a context variable:
 
 ```javascript
-// TODO 
-	rec := map[string]interface{}{
-		"firstName":            subscription.FirstName,
-		"lastName":             subscription.LastName,
-		"phone":                subscription.Phone,
-		"email":                subscription.Email,
-		"notificationSchedule": subscription.Schedule,
-	}
+{{ ctx.channelName }}
+```
 
-	m := map[string]interface{}{
-		"tenantId":    msg.TID,
-		"nodeTypeId":  msg.NodeTypeID,
-		"nodeId":      msg.NodeID,
-		"channelName": msg.ChannelName,
-		"timestamp":   msg.Timestamp,
-		"ruleId":      msg.RuleID,
-		"change":      msg.Change.String(),
-		"reactionId":  reaction.ID,
-	}
+This is an example of the context object:
 
-	nodeInfo := map[string]interface{}{
-		"uniqueId":   nodeContext.UniqueID,
-		"vanityName": nodeContext.VanityName,
-	}
-
-	return map[string]interface{}{
-		"ctx":       m,
-		"recipient": rec,
-		"node":      nodeInfo,
-	}
+```json
+{
+    "ctx": {
+        "change": "enter",
+        "channelName": "temp",
+        "nodeId": 15,
+        "nodeTypeId": 7,
+        "ruleId": 15,
+        "tenantId": 1,
+        "timestamp": 1509487094
+    },
+    "currentData": {
+        "exampleChannel": {
+            "timestamp": "2017-06-04T00:00:01Z",
+            "value": 1.4
+        },
+    },
+    "folder": {
+        "createdAt": "2017-10-30T16:28:41.161646Z",
+        "folderPath": "",
+        "id": 18,
+        "information": {
+            "address": {
+                "address": "5418 Example Rd.",
+                "code": "343",
+                "country": "",
+                "locality": "",
+                "region": "Austin"
+            }
+        },
+        "isRoot": false,
+        "location": null,
+        "metadata": {},
+        "name": "example ",
+        "parentFolderId": 6,
+        "tags": [],
+        "theme": {},
+        "updatedAt": "2017-10-30T16:28:41.161646Z"
+    },
+    "node": {
+        "createdAt": "2017-10-30T16:28:41.161646Z",
+        "folderId": 18,
+        "id": 15,
+        "isActive": true,
+        "location": null,
+        "metadata": {},
+        "nodeTypeId": 7,
+        "parentNodeId": 4,
+        "tags": [],
+        "uniqueId": "c4:93:00:03:6b:24:00:45",
+        "updatedAt": "2017-10-30T16:28:41.161646Z",
+        "vanityName": "Test Example Node 15"
+    },
+    "nodeType": {
+        "activationConfig": {
+            "autoActivate": true,
+            "autoCreate": true,
+            "changeNodeType": false,
+            "changeParent": false,
+            "setFolder": "parent",
+            "setParent": "sender",
+            "syncParentFolder": false
+        },
+        "allowedRoles": null,
+        "channels": {
+            "alias1channel": {
+                "default": 1,
+                "metadata": null,
+                "type": "alias:number",
+                "vanityName": ""
+            }
+        },
+        "createdAt": "2017-10-30T16:28:41.161646Z",
+        "driverId": {
+            "Int64": 0,
+            "Valid": false
+        },
+        "id": 7,
+        "name": "m7",
+        "updatedAt": "2017-10-30T16:28:41.161646Z",
+        "vanityName": ""
+    },
+    "parentNode": {
+        "createdAt": "2017-10-30T16:28:41.161646Z",
+        "folderId": 18,
+        "id": 15,
+        "isActive": true,
+        "location": null,
+        "metadata": {},
+        "nodeTypeId": 7,
+        "parentNodeId": 4,
+        "tags": [],
+        "uniqueId": "c4:93:00:03:6b:24:00:45",
+        "updatedAt": "2017-10-30T16:28:41.161646Z",
+        "vanityName": "Test Node 15"
+    },
+    "reaction": {
+        "id": 6,
+        "name": "Test reaction 3",
+        "ruleId": 15,
+        "type": "sms"
+    },
+    "recipient": {
+        "address": {
+                "address": "5418 Example Rd.",
+                "code": "343",
+                "country": "",
+                "locality": "",
+                "region": "Austin"
+            },
+        "email": "email@example.com",
+        "firstName": "",
+        "lastName": "",
+        "notificationSchedule": "",
+        "phone": ""
+    },
+    "theme": {}
+}
 ```
 
 ## Expressions
 
-Pongo supports basic expressions. TODO
+Pongo supports basic expressions. Operators include:
+
+```
+==, !=, <, <=, >, >=, &&, and, !, not, ||, or, in, not in
+```
+
+Examples:
+
+```javascript
+integers and complex expressions
+{{ 10-100 }}
+{{ -(10-100) }}
+{{ -1 * (-(-(10-100)) ^ 2) ^ 3 + 3 * (5 - 17) + 1 + 2 }}
+
+floats
+{{ 5.5 }}
+{{ 5.172841 }}
+{{ 5.5 - 1.5 == 4 }}
+{{ 5.5 - 1.5 == 4.0 }}
+
+mul/div
+{{ 2 * 5 }}
+{{ 2 * 5.0 }}
+{{ 2 * 0 }}
+{{ 2.5 * 5.3 }}
+{{ 1/2 }}
+{{ 1/2.0 }}
+{{ 1/0.000001 }}
+
+logic expressions
+{{ !true }}
+{{ !(true || false) }}
+{{ true || false }}
+{{ true or false }}
+{{ false or false }}
+{{ false || false }}
+{{ true && (true && (true && (true && (1 == 1 || false)))) }}
+
+float comparison
+{{ 5.5 <= 5.5 }}
+{{ 5.5 < 5.5 }}
+{{ 5.5 > 5.5 }}
+{{ 5.5 >= 5.5 }}
+
+remainders
+{{ (simple.number+7)%7 }}
+{{ (simple.number+7)%7 == 0 }}
+{{ (simple.number+7)%6 }}
+
+in/not in
+{{ 5 in simple.intmap }}
+{{ 2 in simple.intmap }}
+{{ 7 in simple.intmap }}
+{{ !(5 in simple.intmap) }}
+{{ not(7 in simple.intmap) }}
+{{ 1 in simple.multiple_item_list }}
+{{ 4 in simple.multiple_item_list }}
+{{ !(4 in simple.multiple_item_list) }}
+{{ "Hello" in simple.misc_list }}
+{{ "Hello2" in simple.misc_list }}
+{{ 99 in simple.misc_list }}
+{{ False in simple.misc_list }}
+```
 
 ## Filters
 
@@ -65,13 +220,13 @@ Filter arguments that contain spaces must be quoted; for example, to join a list
 
 There are a few [caveats](https://github.com/flosch/pongo2#caveats) regarding django format strings vs python format strings. The library is using go's format strings style for the [time format](https://golang.org/pkg/time/#Time.Format) and [string format](https://golang.org/pkg/fmt/) strings.
 
-### Common Example
+### Example
 
 ```
 TODO
 ```
 
-Renders
+Output:
 
 ```html
 TODO
@@ -150,14 +305,16 @@ TODO
 
 Tags look like this:{% raw  %} `{% tag %}` {% endraw %}. Tags are more complex than variables: Some create text in the output, some control flow by performing loops or logic, and some load external information into the template to be used by later variables. Some tags require beginning and ending tags (i.e. `{% raw %} {% tag %} {% endraw %} ... tag contents ... {% raw  %} {% tag %} {% endraw %}`).
 
-### Common Examples
+### Example
 
 ```
+TODO
 ```
 
-Renders
+Output:
 
 ```html
+TODO
 ```
 
 ### Available Tags
