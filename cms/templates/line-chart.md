@@ -13,7 +13,7 @@ The simplest line chart can be added as follows:
 ```
 <sample-template>
 
-	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2" label="Test Chart">
+	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2" label="Test Chart" />
 
 </sample-template>
 
@@ -25,7 +25,7 @@ Often, however, you'll like to customize the chart more directly, whether in the
 
 ```
 <sample-template>
-	<mf-chart settings={ chart_settings }>
+	<mf-chart settings={ chart_settings } />
 
 	<script>
 
