@@ -25,7 +25,7 @@ Meshify also offers an alternative way to configure the table:
 
 ```
 <sample-template>
-	<mf-history-table settings={ table_settings }>
+	<mf-history-table settings={ table_settings } />
 
 	<script>
 
