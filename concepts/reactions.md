@@ -8,15 +8,44 @@ Templates are primarily used for reaction emails and sms notifications. The temp
 
 Example template:
 
+```django
+{% for key, value in currentAlarms %}
+Alarm: {{ key }} : {{ value.ruleName }} : {{ value.updatedAt }}
+{% endfor %}
+
+{% comment %} This checks to see if alias1channel is in the currentData map via 'dot' syntax {% endcomment %}
+{% if currentData.alias1channel %}
+It is in the current data dictionary.
+{% endif %}
+
+{% comment %} This checks to see if the alias1channel is in the currentData map via the getItem filter, after it checks to see if the key "alias1channel" is in the map.{% endcomment %}
+{% if "alias1channel" in currentData %}
+{% with test=currentData|getItem:"alias1Channel" %}
+{{ test.value }}
+{% endwith %}
+{% endif %}
 ```
 
+Output using example context:
 ```
+Alarm: 3 : Example Rule Name : 2017-11-01T11:22:27.515676-05:00
+
+
+
+
+It is in the current data dictionary.
+
+
+
+1.400000
+``` 
+
 
 ## Context
 
 This is an example of accessing a context variable:
 
-```javascript
+```django
 {{ ctx.channelName }}
 ```
 
@@ -31,31 +60,39 @@ This is an example of the context object:
         "nodeTypeId": 7,
         "ruleId": 15,
         "tenantId": 1,
-        "timestamp": 1509487094
+        "timestamp": 1509552965
+    },
+    "currentAlarms": {
+        "3": {
+            "ruleName": "Example Rule Name",
+            "state": 1,
+            "updatedAt": "2017-11-01T11:22:27.515676-05:00"
+        }
     },
     "currentData": {
-        "exampleChannel": {
-            "timestamp": "2017-06-04T00:00:01Z",
-            "value": 1.4
-        },
+        "alias1channel": {
+            "timestamp": "2017-11-01T11:22:27.515676-05:00",
+            "value": 1.4,
+            "vanityName": "Vanity Name Channel"
+        }
     },
     "folder": {
         "createdAt": "2017-10-30T16:28:41.161646Z",
-        "folderPath": "",
+        "folderPath": "A/B/CV/D/",
         "id": 18,
         "information": {
             "address": {
-                "address": "5418 Example Rd.",
+                "address": "5418 New Rd.",
                 "code": "343",
                 "country": "",
-                "locality": "",
+                "locality": "706 W Ben White Blvd",
                 "region": "Austin"
             }
         },
         "isRoot": false,
         "location": null,
         "metadata": {},
-        "name": "example ",
+        "name": "D",
         "parentFolderId": 6,
         "tags": [],
         "theme": {},
@@ -73,7 +110,7 @@ This is an example of the context object:
         "tags": [],
         "uniqueId": "c4:93:00:03:6b:24:00:45",
         "updatedAt": "2017-10-30T16:28:41.161646Z",
-        "vanityName": "Test Example Node 15"
+        "vanityName": "Test Node 15"
     },
     "nodeType": {
         "activationConfig": {
@@ -92,7 +129,7 @@ This is an example of the context object:
                 "metadata": null,
                 "type": "alias:number",
                 "vanityName": ""
-            }
+            },
         },
         "createdAt": "2017-10-30T16:28:41.161646Z",
         "driverId": {
@@ -126,12 +163,12 @@ This is an example of the context object:
     },
     "recipient": {
         "address": {
-                "address": "5418 Example Rd.",
-                "code": "343",
-                "country": "",
-                "locality": "",
-                "region": "Austin"
-            },
+            "address": "",
+            "code": "",
+            "country": "",
+            "locality": "",
+            "region": ""
+        },
         "email": "email@example.com",
         "firstName": "",
         "lastName": "",
@@ -152,7 +189,7 @@ Pongo supports basic expressions. Operators include:
 
 Examples:
 
-```javascript
+```django
 integers and complex expressions
 {{ 10-100 }}
 {{ -(10-100) }}
@@ -222,14 +259,16 @@ There are a few [caveats](https://github.com/flosch/pongo2#caveats) regarding dj
 
 ### Example
 
-```
-TODO
+Filters are functions, often used for formatting things.
+
+```django
+{{ 3500000|filesizeformat }}
 ```
 
 Output:
 
 ```html
-TODO
+3.3MiB
 ```
 
 ### Available Filters
@@ -301,20 +340,38 @@ TODO
 * [timeuntil](https://docs.djangoproject.com/en/1.7/ref/contrib/humanize/#timeuntil)
 * [naturaltime](https://docs.djangoproject.com/en/1.7/ref/contrib/humanize/#naturaltime)
 
+### Custom Filters
+
+* [getItem](#getItem(inmap[string]interface,keystring)interface{})
+
+#### getItem(in map[string]interface, key string) interface{}
+
+This function will get return the value of a key from a map.
+
+Example:
+
+```django
+{% set value=someMap|getItem:"someKey" %}
+```
+
 ## Tags
 
 Tags look like this:{% raw  %} `{% tag %}` {% endraw %}. Tags are more complex than variables: Some create text in the output, some control flow by performing loops or logic, and some load external information into the template to be used by later variables. Some tags require beginning and ending tags (i.e. `{% raw %} {% tag %} {% endraw %} ... tag contents ... {% raw  %} {% tag %} {% endraw %}`).
 
 ### Example
 
-```
-TODO
+For loop over json object keys using the example context above.
+
+```django
+{% for key, value in currentAlarms %}
+{{ key }} : {{ value.ruleName }} : {{ value.updatedAt }}
+{% endfor %}
 ```
 
 Output:
 
 ```html
-TODO
+3 : Example Rule Name : 2017-11-01T11:22:27.515676-05:00
 ```
 
 ### Available Tags
