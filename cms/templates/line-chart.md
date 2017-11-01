@@ -10,42 +10,64 @@ For data visualizations, Meshify offers the Highcharts and Highstocks libraries,
 
 The simplest line chart can be added as follows:
 
-`<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2" simple="true">`
+```
+<sample-template>
 
-This will create a standard line chart with a week's worth of data for channels channel1 and channel2. The 'simple' property is optional, but if set to true, tells the chart to leave out a lot of the more advanced features. The 'channels' string is a comma-separated list of channel names. There are two in this example, but you can have as many as you want.
+	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2">
 
-Often, however, you'll like to customize the chart more directly, whether in the colors, labels, display, etc. Meshify offers an alternative way to supply the channels:
+</sample-template>
 
 ```
-<mf-chart start_time={ moment().subtract(7, 'days').format() } channels={ chart_channels }>
 
-<script>
+This will create a standard line chart with a week's worth of data for channels channel1 and channel2. The 'channels' string is a comma-separated list of channel names. There are two in this example, but you can have as many as you want.
 
-	var tag = this;
-	tag.chart_channels = [
-		{
-			name: 'hum',
-			label: 'Humidity',
-			axis: 'left',
-			axis_label: 'Humidity',
-			unit: '%',
-			color: '#E28F48'
-		},
-		{
-			name: 'temp',
-			label: 'Temperature',
-			axis: 'right',
-			axis_label: 'Temperature',
-			unit: 'deg',
-			color: '#93C9F4'
+Often, however, you'll like to customize the chart more directly, whether in the colors, labels, display, etc. Meshify offers an alternative way to configure it:
+
+```
+<sample-template>
+	<mf-chart settings={ chart_settings }>
+
+	<script>
+
+		var tag = this;
+		tag.chart_settings = {
+			channels: [
+				{
+					name: 'hum',
+					label: 'Humidity',
+					axis: 'left',
+					axis_label: 'Humidity',
+					unit: '%',
+					color: '#E28F48'
+				},
+				{
+					name: 'temp',
+					label: 'Temperature',
+					axis: 'right',
+					axis_label: 'Temperature',
+					unit: 'deg',
+					color: '#93C9F4'
+				}
+			],
+			label: "Chart",
+			start_time: moment().subtract(30, 'days').format(),
 		}
-	];
 
-</script>
+	</script>
+
+</sample-template>
 
 ```
 
-By passing in an array of channel objects, you can fine-tune the way the chart visualizes them. The objects can include the following properties:
+This is just a sampling of the properties you can supply to the chart configuration object. Here is the full list of options.
+
+---
+
+**channels**
+
+Either a comma-separated list of channel names, or an array of objects conforming to the example above.
+
+The channel objects can include the following properties:
 
 - name: The name of the channel
 - label: The vanity name of the channel to show in the chart legend
@@ -56,23 +78,17 @@ By passing in an array of channel objects, you can fine-tune the way the chart v
 
 All of these properties except 'name' are optional, with strong defaults.
 
-The `<mf-chart>` tag has several customizable options that you can pass into the tag. Here is the full list of properties.
-
----
-
-**channels**
-
-Either a comma-separated list of channel names, or an array of objects conforming to the example above.
-
 *No default.*
 
+*Only the comma-separated list of channels can be passed in separately without a settings object.*
+
 ---
 
-**start_time**
+**height**
 
-An ISO8601 format timestamp. For the sake of everyone's sanity, please use a Moment.js format() function call.
+An integer. The height (in pixels) of the final chart.
 
-*Defaults to one week ago.*
+*Defaults to 400. If the simple property is set to true, shrinks to 300.*
 
 ---
 
@@ -86,7 +102,7 @@ A string for the label that appears at the very top of the chart.
 
 **sampling**
 
-A boolean string. By default, Highstocks samples data values into larger blocks to increase chart readability and performance. Data points that are close to one another (measured in pixels) are grouped and averaged, but will separate into individual points when you zoom into the chart. 
+A boolean. By default, Highstocks samples data values into larger blocks to increase chart readability and performance. Data points that are close to one another (measured in pixels) are grouped and averaged, but will separate into individual points when you zoom into the chart. 
 
 *Defaults to true.*
 
@@ -94,6 +110,16 @@ A boolean string. By default, Highstocks samples data values into larger blocks 
 
 **simple**
 
-A boolean string. Simple mode strips out a lot of the accessory UI elements and offers a simple chart with a legend, the data points, and little else. It's ideal for list templates, where vertical space is limited.
+A boolean. Simple mode strips out a lot of the accessory UI elements and offers a simple chart with a legend, the data points, and little else. It's ideal for list templates, where vertical space is limited.
 
 *Defaults to false.*
+
+---
+
+**start_time**
+
+An ISO8601 format timestamp. For the sake of your sanity, please use a Moment.js format() function call.
+
+*Defaults to one week ago.*
+
+*Start_time can also be passed in separately from the settings object.*
