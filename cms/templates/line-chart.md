@@ -13,7 +13,7 @@ The simplest line chart can be added as follows:
 ```
 <sample-template>
 
-	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2">
+	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2" label="Test Chart">
 
 </sample-template>
 
@@ -50,6 +50,7 @@ Often, however, you'll like to customize the chart more directly, whether in the
 				}
 			],
 			label: "Chart",
+			simple: true,
 			start_time: moment().subtract(30, 'days').format(),
 		}
 
@@ -98,6 +99,8 @@ A string for the label that appears at the very top of the chart.
 
 *No default.*
 
+*Label can also be passed in separately from the settings object.*
+
 ---
 
 **sampling**
@@ -122,4 +125,4 @@ An ISO8601 format timestamp. For the sake of your sanity, please use a Moment.js
 
 *Defaults to one week ago.*
 
-*Start_time can also be passed in separately from the settings object.*
+*Start_time can be passed in separately from the settings object.*
