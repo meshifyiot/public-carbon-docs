@@ -5,7 +5,7 @@
 - [Visualization](#visualization)
 - [People](#people)
 - [Hierarchy](#hierarchy)
-- Notifications
+- [Notifications](#notifications)
 - Web App
 - Content Management
 - [Extensibility](#extensibility)
@@ -21,7 +21,7 @@ In Meshify, each connected thing (sensor, equipment, gateway, etc.) is a node. A
 
 Each node has a [node type](#node-types). The node type defines the channels, html templates, lambda functions, and drivers.
 
-Each node is assigned to a [site](#sites) and the site is assigned to a [folder](#folders) within the hierarchy. Through the site assignment, a node adopts those folder permissions.
+Each node is placed within a [folder](#folders), which orgainizes people and nodes within the hierarchy.
 
 Nodes have [Metadata](#metadata).
 
@@ -39,37 +39,21 @@ A node type is the primary way that nodes receive customization. However node ty
 
 Node types are important because they lock together a data structure (channels) with features that use the data structure (such as html templates, notifications, and lambda functions).
 
-
 ### <a name="channels">Channels</a>
 
 Channels store all timestamped values for nodes. They are like data fields or columns in a database. They provide context through naming and are used to reference node data.
 
 Each channel has a defined data type: `String`, `Number`, or `Boolean`.
 
+### <a name="alias-channels">Alias Channels</a>
 
-### <a name="sites">Sites</a>
-
-In Meshify, all nodes are contained within sites. The site has a location. A site has a status based on the status and roll-up settings of contained nodes.
-
-Sites have [Metadata](#metadata).
+Alias channels provide a way of forwarding data from one channel to another channel. Data remains at the original channel and is also copied to another designated channel. 
 
 ## <a name="visualization">Visualization</a>
 
 ### <a name="html-templates">HTML Templates</a>
 
-HTML Templates provide a customized and dynamic view of data from a particular node.
-
-Each html template is a [Riot.js](http://riotjs.com) custom tag. Templates use Meshify library functions and Meshify custom tags to visualize channel data numerically or in charts.
-
-HTML Templates leverage [Tachyons](http://tachyons.io) CSS Toolkit and [Moment.js](http://momentjs.com).
-
-```
-When finalized, html snippets will go here
-```
-
-### <a name="site-templates">Site Templates</a>
-
-Site templates are like node HTML Templates, but they are associated with [sites](#sites).
+HTML Templates define how live data is visualized in Meshify. They are fully customizable HTML and can leverage some of our built-in components, such as line graphs.
 
 ## <a name="people">People</a>
 
@@ -93,26 +77,42 @@ Guests are people that do not log into Meshify, but have [subscriptions](#subscr
 
 ### <a name="folders">Folders</a>
 
-Folders are the basic, recursive unit of hierarchy. A user's location(s) within a hierarchy dictates which sites (and therefore which nodes) are visibile to that user.
+Folders are the basic, recursive unit of hierarchy. A user's location(s) within a hierarchy dictates which nodes are visibile to that user.
 
-A user can see sites at or below their assigned folder(s), but cannot see any folders above them. Said another way, a user can see sites within their folder and any folders contained by their folder, but cannot see contain_ing_ folders.
+A user can see nodes at or below their assigned folder(s), but cannot see any folders above them. They can also see nodes within any folders that are contained by their folder(s).
 
-A single folder sits at the top of the hierarchy. A user placed within this folder may see the contents of any folder in the system.
+A single folder sits at the top of the hierarchy. A user placed within this folder has access to the entire system.
 
 Folders have [Metadata](#metadata).
 
+## <a name="notifications">Notifications</a>
 
-## Notifications
+The life cycle of a notification relies on several objects:
+
+1. Rule: A rule condition is triggered.
+2. Icon: Each rule is given a severity level, indicated by the icon
+2. Reaction: The rule's reaction uses a template to generate an alert message
+3. Subscription + Schema: The subscription ties a user to notification schema which indicates the notification schedule
 
 ### <a name="rules">Rules</a>
 
+See [rules documentation](rules.md) documentation.
+
 ### <a name="reactions">Reactions</a>
+
+See [reactions documentation](reactions.md).
 
 ### <a name="icons">Icons</a>
 
+See [icons documentation](icons.md) documentation.
+
 ### <a name="notification-schema">Notification Schema</a>
 
+See [schedules documentation](schedules.md) documentation.
+
 ### <a name="subscriptions">Subscriptions</a>
+
+Subscription links a user with a notification schema, and subscribes the user to related reactions.
 
 ## Web App
 
@@ -134,7 +134,7 @@ Folders have [Metadata](#metadata).
 ## <a name="extensibility">Extensibility</a>
 ### <a name="lambda-functions">Lambda Functions</a>
 
-Lambda functions are javascript functions that run when a value is received on a designated channel. They are used to transform incoming data or run sophisticated rules algorithms. A built-in library provides commonly used functionlaity such as retrieving current values from other channels, getting historical data, or sending values to other channels. Lambdas are short-lived (typically <10ms) and do not retain state.
+Lambda functions are javascript functions that run when a value is received on a designated channel. They are used to transform incoming data or run sophisticated rules algorithms. A built-in library provides commonly used functionlaity such as retrieving current values from other channels, getting historical data, or sending values to other channels. Lambdas are short-lived (typically <10ms) and do not retain state (but clever lambda developers may use channels to perpetuate state).
 
 Common uses of Lambdas include:
 
