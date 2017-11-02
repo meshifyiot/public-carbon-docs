@@ -13,7 +13,7 @@ The simplest history table can be added as follows:
 ```
 <sample-template>
 
-	<mf-history-table start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2" title="Channel History" />
+	<mf-history-table start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2" />
 
 </sample-template>
 
@@ -43,7 +43,6 @@ Meshify also offers an alternative way to configure the table:
 					unit: 'deg',
 				}
 			],
-			title: "Temperature & Humidity History",
 			start_time: moment().subtract(1, 'days').format(),
 		}
 
@@ -83,13 +82,11 @@ An integer. The height (in pixels) of the final table. Scrolling is enabled by d
 
 ---
 
-**title**
+**timezone**
 
-A string for the label that appears at the very top of the table.
+A string for the timezone in which to render all timestamps in the table. [A whole table of valid timezone strings can be found on Wikipedia](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
 
-*No default.*
-
-*Title can also be passed in separately from the settings object.*
+*Defaults to moment.tz.guess(), which guesses (fairly accurately) the timezone of the logged-in user.*
 
 ---
 
