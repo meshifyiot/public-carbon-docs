@@ -21,7 +21,7 @@ TODO add swagger link or something ?
     - [log(args ... )](#logargs--)
     - [getCurrentDataByUniqueId(uniqueId, channelNames)](#getcurrentdatabyuniqueiduniqueid-channelnames)
     - [getHistoryDataByUniqueId(uniqueId, channelName, start, end)](#gethistorydatabyuniqueiduniqueid-channelname-start-end)
-    - [getNodeMetadata(uniqueId)](#getnodemetadata)
+    - [getNodeMetadata(uniqueId)](#getnodemetadatauniqueid)
 - [Testing](#testing)
     - [TestResult{}](#testresult)
 
