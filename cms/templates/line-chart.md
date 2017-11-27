@@ -103,6 +103,14 @@ A string for the label that appears at the very top of the chart.
 
 ---
 
+**ordinal**
+
+A boolean. When set to true, Highstocks will equally space data points regardless of the actual time or x distance between them. Periods in which data was not sent (typically nights or weekends) will not occupy space on the chart. This makes for a more visually pleasing visualization, but can be misleading when there are periods of no data. 
+
+*Defaults to false.*
+
+---
+
 **sampling**
 
 A boolean. By default, Highstocks samples data values into larger blocks to increase chart readability and performance. Data points that are close to one another (measured in pixels) are grouped and averaged, but will separate into individual points when you zoom into the chart. 
