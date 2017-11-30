@@ -93,6 +93,14 @@ An integer. The height (in pixels) of the final chart.
 
 ---
 
+**id**
+
+A string used to identify the chart when it fires events. See the Events section for more information.
+
+*Defaults to 'chart'.*
+
+---
+
 **label**
 
 A string for the label that appears at the very top of the chart.
@@ -134,3 +142,55 @@ An ISO8601 format timestamp. For the sake of your sanity, please use a Moment.js
 *Defaults to one week ago.*
 
 *Start_time can be passed in separately from the settings object.*
+
+### Events
+
+The mf-chart tag will fire an event when the chart is fully rendered. You can listen to the event inside your template like so:
+
+```
+<sample-template>
+	
+	<mf-chart ref="temp_chart" settings={ chart_settings } />
+
+	<script>
+
+		var tag = this;
+		tag.chart_settings = {
+			id: "temp",
+			channels: [
+				{
+					name: 'hum',
+					label: 'Humidity',
+					axis: 'left',
+					axis_label: 'Humidity',
+					unit: '%',
+					color: '#E28F48'
+				},
+				{
+					name: 'temp',
+					label: 'Temperature',
+					axis: 'right',
+					axis_label: 'Temperature',
+					unit: 'deg',
+					color: '#93C9F4'
+				}
+			],
+			label: "Chart",
+			simple: true,
+			start_time: moment().subtract(30, 'days').format(),
+		}
+
+		tag.on('temp_loaded', function(){
+			<!-- Callback function to manipulate the chart. -->
+			tag.refs.temp_chart.highcharts.setTitle({text: "Chart Has Loaded"});
+		})
+
+	</script>
+
+</sample-template>
+
+```
+
+When the *id* property is supplied in a chart_setting configuration object, the mf-chart tag will fire an event structured like the following: `id_loaded.` This is useful for when you have multiple charts in the same template and need to interact with them all differently upon render.
+
+When—and only when—the `_loaded` event is triggered, you can access the highcharts object on the loaded chart. Per Riot.js convention, it's best to add a ref ("temp_chart", in the example above) to the mf-chart tag. The highcharts object can then be accessed at `tag.refs[REF_NAME].highcharts`, and with it you can interact with the chart (adding plot bands, changing colors, etc.) using the full capabilities of the Highcharts library.
