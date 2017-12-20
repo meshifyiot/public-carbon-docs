@@ -111,15 +111,13 @@ min(1,2) == MIN(1,2) AND numberchannel.value * 5 == 1 * 5
 
 ## Context
 
-Rules are executed with context variables. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attached. A shortcut to access the current channel values is available via `.current`. The timestamp is an epoch UTC timestamp.
+Rules are executed with context variables. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attached. The timestamp is an epoch number.
 
 Examples:
 
 ```javascript
 somechannel.value
 somechannel.timestamp
-current.value
-current.timestamp
 ```
 
 ### Utility Context
