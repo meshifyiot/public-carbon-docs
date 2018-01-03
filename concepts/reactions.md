@@ -1,4 +1,5 @@
 # Reactions
+Reactions are the result of a state change from a rule. Currently a reaction will be either an sms, or an email. The body, subject, from email, and from name fields are all templateable and will default to tenant settings if they are set or meshify's platform defaults.
 
 ## Templates
 
