@@ -25,6 +25,7 @@ The Users-Reset template currently provide access to these context variables:
 - Theme (theme object for User)
 - Protocol (http or https)
 - Domain (i.e. carbon.meshify.com)
+- Folders (the folders in the current scope and their related meta data)
 
 The Users-Invite template currently provide access to these context variables:
 
@@ -34,6 +35,7 @@ The Users-Invite template currently provide access to these context variables:
 - Theme (theme object for User)
 - Protocol (http or https)
 - Domain (i.e. carbon.meshify.com)
+- Folders (the folders in the current scope and their related meta data)
 
 ## Default Templates
 
