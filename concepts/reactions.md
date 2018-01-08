@@ -1,5 +1,5 @@
 # Reactions
-Reactions are the result of a state change from a rule. Currently a reaction will be either an sms, or an email. The body, subject, from email, and from name fields are all templateable and will default to tenant settings if they are set or meshify's platform defaults.
+Reactions are the result of a state change from a rule. Currently a reaction will be either an sms, or an email. The body, subject, from email, and from name fields are all templateable and will default to tenant settings if they are set or meshify's platform defaults. Reactions have a deduplication mechanism, where the the exact same message will only be sent out once every 90 seconds. 
 
 ## Templates
 
