@@ -111,15 +111,13 @@ min(1,2) == MIN(1,2) AND numberchannel.value * 5 == 1 * 5
 
 ## Context
 
-Rules are executed with context variables. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attached. A shortcut to access the current channel values is available via `.current`. The timestamp is an epoch UTC timestamp.
+Rules are executed with context variables. The context provided is mostly current channel datapoint values. These are accessed via the channel name with `.value` or `.timestamp` attached. The timestamp is an epoch number.
 
 Examples:
 
 ```javascript
 somechannel.value
 somechannel.timestamp
-current.value
-current.timestamp
 ```
 
 ### Utility Context
@@ -132,7 +130,7 @@ now    // this is the current time in unix epoch seconds (UTC)
 
 ## Cron & Debounce Timers
 
-There are two types of timers that can affect rule execution, as denoted by the cron and debounce fields in the Rules edit UI. The cron timer determines whether the current rule should run as a cron job (cron time in minutes). This can be set to 0 for a real-time rule, or between 30 and 10080 minutes for a cron rule. The debounce timer can be set between 0 and 60, and will wait that number of seconds after a positive rule result to react to the rule, and cancel the result if the rule evaluates to false during the wait period. Setting the debounce field to 0 results in no debounce.
+There are two types of timers that can affect rule execution, as denoted by the cron and debounce fields in the Rules edit UI. The cron timer determines whether the current rule should run as a cron job (cron time in minutes). This can be set to 0 for a real-time rule, or between 30 and 10080 minutes for a cron rule. Cron rules are also evaluated on that channel when regular data is processed. The debounce timer can be set between 0 and 60, and will wait that number of seconds after a positive rule result to react to the rule, and cancel the result if the rule evaluates to false during the wait period. Setting the debounce field to 0 results in no debounce.
 
 #### Limits
 

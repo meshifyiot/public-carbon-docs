@@ -66,12 +66,14 @@ vanity: "Node Name"
 
 ### Sample Template
 
-Here's an example of a sample detail template, which outputs all of the channel values for a node:
+Here's an example of a sample detail template, which shows the node statis icon and outputs all of the channel values for a node:
 
 ```javascript
 
 <sample-template>
-
+       <div>Node Status: 
+      		<img style='height:32px; width:32px' class='ma0 pa0 mb1 v-mid' src="{getSeverityIcon(opts.node.icon.shape,opts.node.icon.color)}" />
+        </div>
 	<div each={ point, channel_name in opts.node.channels }>
 		<h2>{ point.vanityName }</h2>
 		<p>{ point.value }</p>

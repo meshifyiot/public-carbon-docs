@@ -16,6 +16,7 @@
 - [CMS](/cms)
   - [Node Type Templates](/cms/templates)
   	- [Line Chart](/cms/templates/line-chart.md)
+    - [History Table](/cms/templates/history-table.md)
   - [Theming](/cms/theming.md)
 - [Api](http://carbon-docs.meshify.com)
 - [Overview](#Overview)

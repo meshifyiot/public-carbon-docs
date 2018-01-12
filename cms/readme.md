@@ -4,6 +4,7 @@
 
 - [Node Type Templates](./templates)
 	- [Line Chart](./templates/line-chart.md)
+	- [History Table](./templates/history-table.md)
 - [Theming](./theming.md)
 
 ## Basics

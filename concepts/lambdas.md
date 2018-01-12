@@ -21,6 +21,7 @@ TODO add swagger link or something ?
     - [log(args ... )](#logargs--)
     - [getCurrentDataByUniqueId(uniqueId, channelNames)](#getcurrentdatabyuniqueiduniqueid-channelnames)
     - [getHistoryDataByUniqueId(uniqueId, channelName, start, end)](#gethistorydatabyuniqueiduniqueid-channelname-start-end)
+    - [getNodeMetadata(uniqueId)](#getnodemetadatauniqueid)
 - [Testing](#testing)
     - [TestResult{}](#testresult)
 
@@ -222,6 +223,29 @@ log(JSON.stringify(historicalData, null, 2))
         "value": 9000.1
     }
 ]
+*/
+```
+
+### getNodeMetadata(uniqueId)
+
+Will get the current Metadata value for the node requested.
+
+#### Params
+
+* uniqueId `string` - the unique id of the node you would like the metadata for.
+
+#### Returns
+metadata - `object` - returns an object with each property being a top level metadata key.
+
+#### Example
+
+```javascript
+var metadata = getNodeMetadata('00:00:00:00:00')
+log(JSON.stringify(metadata, null, 2))
+/*
+{
+    "someKey": "some value"
+}
 */
 ```
 

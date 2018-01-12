@@ -1,8 +1,19 @@
 # MQTT
 
-## Legacy
+MQTT Messages will be ingested if the `uniqueId` and `parentNodeId` are present on a given `tenantId`. Data will be accepted on channels, even if they don't exist, and it can be added to the schema at a later time.
 
-### Topic Structure
+## MQTT v1 (Current Platform)
+
+### Topic Structure - Backwards-Compatible Legacy Format
+
+`meshify/db/:tenantId/:parentNodeId/:techName/:channelName`
+
+Notes:
+
+- `techName` is in the format: `deviceType[00:00:00:00:00:00:00:00]!`. The string within the brackets is treated as the `uniqueId`.
+- `parentNodeId` will needs to be created in Carbon.
+
+### Topic Structure - Carbon Format
 
 `meshify/db/:tenantId/:parentNodeId/:nodeTypeName/:uniqueId/:channelName`
 
