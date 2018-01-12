@@ -1,12 +1,12 @@
 # General Overview
 
-The carbon api has a web-socket resource `api/stream` that exposes a real time feed of data points and events. There are three endpoints:
+The carbon api has a websocket resource `api/stream` that exposes a real time feed of data points and events. There are three endpoints:
 
-* `/api/stream/:id/data` - opens up one web-socket that will publish all data points for the node `:id`. To unsubscribe simply close the socket.
+* `/api/stream/:id/data` - opens up one websocket that will publish all data points for the node `:id`. To unsubscribe simply close the socket.
 
-* `/api/stream/:id/event` - opens up one web-socket that will publish all events for the node `:id`. To unsubscribe simply close the socket.
+* `/api/stream/:id/event` - opens up one websocket that will publish all events for the node `:id`. To unsubscribe simply close the socket.
 
-* `/api/stream/all` - is a single web-socket that will allow the consumer to subscribe, and unsubscribe to multiple node's events and/or data points. It also supports channel filtering.
+* `/api/stream/all` - is a single websocket that will allow the consumer to subscribe, and unsubscribe to multiple node's events and/or data points. It also supports channel filtering.
 
 ### `/api/stream/:id/data`
 
@@ -57,9 +57,9 @@ Example Payload:
 
 ### `/api/stream/all`
 
-The `stream/all` is similar to the other endpoints except it allows the consumer to receive data, and events from multiple nodes through the same web-socket.
+The `stream/all` is similar to the other endpoints except it allows the consumer to receive data, and events from multiple nodes through the same websocket.
 
-After the initial handshake with the web-socket, the consumer will need to instruct the server as to what it wants to receive. This is done via a `request` payload.
+After the initial handshake with the websocket, the consumer will need to instruct the server as to what it wants to receive. This is done via a `request` payload.
 
 Example `request` payload:
 
