@@ -8,3 +8,4 @@
 - [Reactions](./reactions.md)
 - [Rules](./rules.md)
 - [Schedules](./schedules.md)
+- [Streaming](./streaming.md)

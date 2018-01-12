@@ -10,6 +10,7 @@
   - [Reactions](/concepts/reactions.md)
   - [Rules](/concepts/rules.md)
   - [Schedules](/concepts/schedules.md)
+  - [Streaming](/concepts/streaming.md)
   - [Email Templates](/concepts/emailtemplates.md)
   - [MQTT](/concepts/mqtt.md)
 - [CMS](/cms)
