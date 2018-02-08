@@ -203,8 +203,8 @@ historicalData - `datapoint[]` - returns an array of datapoints. They are sorted
 #### Example
 
 ```javascript
-var start = Date.now() / 1000
-var end = Date.now() / 1000 - daysToSeconds(900)
+var start = Date.now() / 1000 - daysToSeconds(900)
+var end = Date.now() / 1000 
 var historicalData = getHistoryDataByUniqueId('00:00:00:00:00', 'tempchannel', start, end)
 log(JSON.stringify(historicalData, null, 2))
 /*
