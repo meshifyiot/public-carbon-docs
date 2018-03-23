@@ -25,6 +25,15 @@ It is in the current data dictionary.
 {{ test.value }}
 {% endwith %}
 {% endif %}
+
+{% comment %} This is how you access an array item directly.{% endcomment %}
+{{ arrayOfItems.0.Name }} 
+  
+{% comment %} Another way to access items in an array {% endcomment %}
+{% with arrayOfItems|first as firstItem %}
+    {{ firstItem.Name }}
+{% endwith %}
+``` 
 ```
 
 Output using example context:
