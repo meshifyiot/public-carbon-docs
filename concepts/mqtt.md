@@ -11,7 +11,7 @@ MQTT Messages will be ingested if the `uniqueId` and `parentUniqueId` are presen
 Notes:
 
 - `techName` is in the format: `deviceType[00:00:00:00:00:00:00:00]!`. The string within the brackets is treated as the `uniqueId`.
-- `parentUniqueId` will needs to be created in Carbon.
+- `parentUniqueId` needs to be created in Carbon.
 
 ### Topic Structure - Carbon Format
 
