@@ -20,6 +20,7 @@ Notes:
 Notes:
 
 - You can replace `:parentUniqueId` with `_` if you want the node to be its own parent.
+- You can replace `:nodeTypeName` with `_` if you don't want to change the node type.
 
 #### Special Channels
 
@@ -48,4 +49,4 @@ Notes:
 
 ## Version 2
 
-Expected Q4 2017.
+Expected Q3 2018.
