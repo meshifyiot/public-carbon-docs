@@ -5,6 +5,16 @@
 - [Node Type Templates](./templates)
 	- [Line Chart](./templates/line-chart.md)
 	- [History Table](./templates/history-table.md)
+	- [Well](./templates/mi-well.md)
+	- [Card](./templates/mi-card.md)
+	- [Status Icon](./templates/mi-status-icon.md)
+	- [Tooltip](./templates/mi-tooltip.md)
+	- [Simple Gauge](./templates/mi-simple-gauge.md)
+	- [Mech Gauge](./templates/mi-mech-gauge.md)
+	- [History Modal](./templates/mi-history-modal.md)
+	- [Download History](./templates/mi-download-history.md)
+	- [GPS Image](./templates/mi-gps-image.md)
+	- [Custom Chart](./templates/mi-custom-chart.md)
 - [Theming](./theming.md)
 
 ## Basics
