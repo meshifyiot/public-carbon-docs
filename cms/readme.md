@@ -19,7 +19,7 @@
 
 ## Basics
 
-The "CMS" system is a very light CMS system that allows customers to modify
+The Carbon content management system is a very light CMS that allows customers to modify
 and tweak the different templates, colors, logos, and other such things to adjust
 a Meshify UI to their liking.
 
