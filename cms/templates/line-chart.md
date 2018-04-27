@@ -10,18 +10,22 @@ For data visualizations, Meshify offers the Highcharts and Highstocks libraries,
 
 The simplest line chart can be added as follows:
 
+![alt text](../screenshots/simple-chart.png "Simple Chart")
+
 ```
 <sample-template>
 
-	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="channel1,channel2" label="Test Chart" />
+	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="work_time,work_fuel" label="Demo Chart" />
 
 </sample-template>
 
 ```
 
-This will create a standard line chart with a week's worth of data for channels channel1 and channel2. The 'channels' string is a comma-separated list of channel names. There are two in this example, but you can have as many as you want.
+This will create a standard line chart with a week's worth of data for channels work_time and work_fuel. The 'channels' string is a comma-separated list of channel names. There are two in this example, but you can have as many as you want.
 
 Often, however, you'll like to customize the chart more directly, whether in the colors, labels, display, etc. Meshify offers an alternative way to configure it:
+
+![alt text](../screenshots/mf-chart.png "Chart")
 
 ```
 <sample-template>
@@ -33,25 +37,31 @@ Often, however, you'll like to customize the chart more directly, whether in the
 		tag.chart_settings = {
 			channels: [
 				{
-					name: 'hum',
-					label: 'Humidity',
-					axis: 'left',
-					axis_label: 'Humidity',
-					unit: '%',
-					color: '#E28F48'
-				},
-				{
-					name: 'temp',
-					label: 'Temperature',
-					axis: 'right',
-					axis_label: 'Temperature',
-					unit: 'deg',
-					color: '#93C9F4'
-				}
-			],
-			label: "Chart",
-			simple: true,
-			start_time: moment().subtract(30, 'days').format(),
+				name: 'fuel_rate',
+				unit:'lps',
+			},{
+				name: 'idle_time',
+				unit:'minutes',
+			},{
+				name: 'idle_fuel',
+				unit:'liters',
+			},{
+				name: 'work_time',
+				unit:'minutes',
+			},{
+				name: 'work_fuel',
+				unit:'liters',
+			},{
+				name: 'daily_idle_time',
+				unit:'minutes',
+			}],
+			alarms:tag.opts.node.alarm_ids,
+			label:'Docs Demo',
+			full_scale:false, //This is a default
+			remove_axis:false, //This is a default
+			remove_rangepicker:false, //This is a default
+			simple:false, //This is a default
+			start_time: moment().subtract(7, 'days').format(),
 		}
 
 	</script>
@@ -60,7 +70,55 @@ Often, however, you'll like to customize the chart more directly, whether in the
 
 ```
 
+Also we have the option of showing alarms: 
+
+![alt text](../screenshots/alarm.png "Alarm")
+
+```
+<sample-template>
+	<mf-chart settings={ chart_settings } />
+
+	<script>
+
+		var tag = this;
+		tag.chart_settings = {
+			channels: [
+				{
+				name: 'coolant_temp',
+				label: 'Coolant Demo'
+				
+			}],
+			alarms:tag.opts.node.alarm_ids,
+			label:'Work Demo',
+			full_scale:false, //This is a default
+			remove_axis:false, //This is a default
+			remove_rangepicker:false, //This is a default
+			simple:false, //This is a default
+			start_time: moment().subtract(1, 'days').format(),
+		}
+
+	</script>
+
+</sample-template>
+
+```
+
+Notes
+---
+ Alarms - tag.opts.node.alarm_ids provides the full list of alarms available to that node. Also you can hand select certain alarm ids and 
+ place them in an array as an alternative. The chart will only show entrance events. 
+
+ Highcharts will only generate a timespan that has values in it. Let's say you make a 30 day request but 10 days are missing from the beginning or the end, that is because there isn't any data there. Highcharts will not show empty space before the first point or after the last point. 
+
+ 
+
 This is just a sampling of the properties you can supply to the chart configuration object. Here is the full list of options.
+
+---
+
+**alarms**
+
+An array of numbers. If you want all the alarms, you can use tag.opts.node.alarm_ids or you can make your own array. Only shows entrance events on the chart.
 
 ---
 
@@ -82,6 +140,12 @@ All of these properties except 'name' are optional, with strong defaults.
 *No default.*
 
 *Only the comma-separated list of channels can be passed in separately without a settings object.*
+
+---
+
+**full_scale**
+
+A boolean. Default is false. When set to true, each stream of data will have its own axis so that way you can see full resolution trends.
 
 ---
 
@@ -116,6 +180,18 @@ A string for the label that appears at the very top of the chart.
 A boolean. When set to true, Highstocks will equally space data points regardless of the actual time or x distance between them. Periods in which data was not sent (typically nights or weekends) will not occupy space on the chart. This makes for a more visually pleasing visualization, but can be misleading when there are periods of no data. 
 
 *Defaults to false.*
+
+---
+
+**remove_axis**
+
+A boolean. Defaults to false. When set to true, it removes the y-axis typically on the left side. This feature is useful in combination with full_scale. Each axis takes up too much horizontals space and will make your graph smaller and smaller with each channel added.
+
+---
+
+**remove_rangepicker**
+
+A boolean. Defaults to false. When set to true, it removes the range picker from view. This is useful when you have one rangepicker controlling many charts in a single template. 
 
 ---
 
