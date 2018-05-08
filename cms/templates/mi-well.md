@@ -4,6 +4,8 @@
 
 The purpose of the mi-well tag is to provide quick and easy ways to view timeseries data and latest channel values without having to think about design. 
 
+Values and timestamps are updated via websockets. Each stream is updated via websockets in the chart.
+
 ## Channels
 
 

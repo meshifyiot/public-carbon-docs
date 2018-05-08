@@ -25,7 +25,7 @@ At its core, the mi-history-modal is a cool icon button for people new to our ex
 
 On click...
 
-![alt text](../screenshots/open-modal.png "Mech Gauge")
+![alt text](../screenshots/open-modal.png "History Modal")
 
 ## Notes
 

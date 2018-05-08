@@ -4,6 +4,8 @@
 
 The purpose of the mi-card tag is to provide quick and easy ways to view timeseries data and latest channel values without having to think about design. 
 
+The channel value and timestamp are both websocketed.
+
 ## Syntax
 
 
@@ -44,7 +46,7 @@ Mandatory. String of the literal channel name. This is what fetches the channel 
 
 **label**
 
-Optional but necessary for context. String for card label
+Optional but necessary for context. String for card label. Defaults to channel vanity name.
 
 ---
 
@@ -78,8 +80,3 @@ Optional. Accepts hex, rgb, rgba, and color strings. Determines the color of the
 
 ---
 
-**tooltip**
-
-Optional. Determines whether or not there is a hover tooltip text on the card label. Useful for super long card label strings that bleed out of normal layout.
-
----

@@ -4,6 +4,8 @@
 
 The purpose of the mi-simple-gauge tag is to provide the user with a dashboard overview gauge. Really good for representing KPI percentages.
 
+The channel value is websocketed and the update is animated on the gauge.
+
 ## Syntax
 
 

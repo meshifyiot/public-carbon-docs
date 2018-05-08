@@ -42,9 +42,16 @@ Below we will cover the opts that can be passed to mi-tooltip.
 
 ---
 
+
 **label**
 
 Mandatory. String that is always shown. By default if the string is longer than 16 characters, it is cut short.
+
+---
+
+**max**
+
+Optional. Integer that determines the string cutoff point for the label. Default is 16.
 
 ---
 
@@ -54,8 +61,10 @@ Optional. Without this, the tooltip will just show the full string of the label.
 
 ---
 
-**max**
+**top**
 
-Optional. Integer that determines the string cutoff point for the label. Default is 16.
+Optional. Boolean, if true then the tooltip will show on top of the label. Deafults to showing below.
 
 ---
+
+

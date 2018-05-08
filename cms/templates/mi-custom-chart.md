@@ -4,6 +4,8 @@
 
 The purpose of the mi-custom-chart tag is to provide the user with a list of channels they can select in order to construct their own chart.
 
+Each stream of the chart is websocketed.
+
 ## Syntax
 
 
@@ -43,6 +45,6 @@ When passing an array of custom channels to show, You will know that it is worki
 
 **channels**
 
-Optional. An array of strings. Each string represents a node channel name. 
+Optional. An array of strings. Each string represents a node channel name. Defaults to rendering all channels as options.
 
 ---

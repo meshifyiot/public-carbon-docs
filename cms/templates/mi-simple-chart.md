@@ -1,10 +1,10 @@
-## Node Type Templates: Line Chart
+## Node Type Templates: Simple Chart
 
 ### Introduction
 
-The purpose of the mf-chart is to create a line chart to visualize channel values on a node over a specific period of time.
+The purpose of the mi-simple-chart is to show a stylized graph meant for showcasing a single channel stream. 
 
-Each stream is updated via websockets.
+The channel stream is websocketed.
 
 ### Syntax
 
@@ -12,12 +12,12 @@ Each stream is updated via websockets.
 
 The simplest line chart can be added as follows:
 
-![alt text](../screenshots/simple-chart.png "Line Chart")
+![alt text](../screenshots/fun-chart.png "Simple Chart")
 
 ```
 <sample-template>
 
-	<mf-chart start_time={ moment().subtract(7, 'days').format() } channels="work_time,work_fuel" label="Demo Chart" />
+	 <mi-simple-chart channels='fuel_rate'/>
 
 </sample-template>
 
@@ -27,77 +27,24 @@ This will create a standard line chart with a week's worth of data for channels 
 
 Often, however, you'll like to customize the chart more directly, whether in the colors, labels, display, etc. Meshify offers an alternative way to configure it:
 
-![alt text](../screenshots/mf-chart.png "Line Chart")
+![alt text](../screenshots/custom-fun-chart.png "Chart")
 
 ```
 <sample-template>
-	<mf-chart settings={ chart_settings } />
+	<mi-simple-chart settings={settings}/>
 
 	<script>
 
 		var tag = this;
-		tag.chart_settings = {
-			channels: [
-				{
-				name: 'fuel_rate',
-				unit:'lps',
-			},{
-				name: 'idle_time',
-				unit:'minutes',
-			},{
-				name: 'idle_fuel',
-				unit:'liters',
-			},{
-				name: 'work_time',
-				unit:'minutes',
-			},{
-				name: 'work_fuel',
-				unit:'liters',
-			},{
-				name: 'daily_idle_time',
-				unit:'minutes',
-			}],
-			alarms:tag.opts.node.alarm_ids,
-			label:'Docs Demo',
-			full_scale:false, //This is a default
-			remove_axis:false, //This is a default
-			remove_rangepicker:false, //This is a default
-			simple:false, //This is a default
-			start_time: moment().subtract(7, 'days').format(),
-		}
-
-	</script>
-
-</sample-template>
-
-```
-
-Also we have the option of showing alarms: 
-
-![alt text](../screenshots/alarm.png "Alarm")
-
-```
-<sample-template>
-	<mf-chart settings={ chart_settings } />
-
-	<script>
-
-		var tag = this;
-		tag.chart_settings = {
-			channels: [
-				{
-				name: 'coolant_temp',
-				label: 'Coolant Demo'
-				
-			}],
-			alarms:tag.opts.node.alarm_ids,
-			label:'Work Demo',
-			full_scale:false, //This is a default
-			remove_axis:false, //This is a default
-			remove_rangepicker:false, //This is a default
-			simple:false, //This is a default
-			start_time: moment().subtract(1, 'days').format(),
-		}
+		tag.settings = {
+            channels: [{
+                name:'fuel_rate'
+            }],
+            remove_rangepicker:false,
+            bg_color:'#CF564F',
+            simple:true,
+            label:'this is a demo',
+        }
 
 	</script>
 
@@ -107,8 +54,7 @@ Also we have the option of showing alarms:
 
 Notes
 ---
- Alarms - tag.opts.node.alarm_ids provides the full list of alarms available to that node. Also you can hand select certain alarm ids and 
- place them in an array as an alternative. The chart will only show entrance events. 
+
 
  Highcharts will only generate a timespan that has values in it. Let's say you make a 30 day request but 10 days are missing from the beginning or the end, that is because there isn't any data there. Highcharts will not show empty space before the first point or after the last point. 
 
@@ -118,9 +64,9 @@ This is just a sampling of the properties you can supply to the chart configurat
 
 ---
 
-**alarms**
+**bg_color**
 
-An array of numbers. If you want all the alarms, you can use tag.opts.node.alarm_ids or you can make your own array. Only shows entrance events on the chart.
+Optional. Hex string to define the color of the background and the surrounding glow.
 
 ---
 

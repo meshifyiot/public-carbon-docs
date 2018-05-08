@@ -4,6 +4,8 @@
 
 The purpose of the mi-status-icon tag is to provide quick and easy ways to view the status of a particular channel, regardless of it being binary in nature or not.
 
+The status icon is websocketed and will update color based on either "on" or "cb" option logic.
+
 ## Syntax
 
 

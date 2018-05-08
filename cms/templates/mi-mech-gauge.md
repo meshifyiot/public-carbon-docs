@@ -4,6 +4,8 @@
 
 The purpose of the mi-mech-gauge tag is to provide the user with a more detailed gauge. Really good for representing precise points of data.
 
+The channel value is websocketed and the update is animated on the gauge.
+
 ## Syntax
 
 
