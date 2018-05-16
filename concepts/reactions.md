@@ -10,7 +10,7 @@ Templates are primarily used for reaction emails and sms notifications. The temp
 Example template:
 
 ```django
-{{ "{% for key, value in currentAlarms " }}%}
+{% for key, value in currentAlarms %}
 Alarm: {{ key }} : {{ value.ruleName }} : {{ value.updatedAt }}
 {% endfor %}
 
