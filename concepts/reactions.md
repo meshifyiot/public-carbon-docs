@@ -34,19 +34,18 @@ It is in the current data dictionary.
     {{ firstItem.Name }}
 {% endwith %}
 ``` 
-```
+
 
 Output using example context:
 ```
 Alarm: 3 : Example Rule Name : 2017-11-01T11:22:27.515676-05:00
-
-
+```
 
 
 It is in the current data dictionary.
 
 
-
+```
 1.400000
 ``` 
 
