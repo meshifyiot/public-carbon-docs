@@ -9,8 +9,8 @@ Templates are primarily used for reaction emails and sms notifications. The temp
 
 Example template:
 
-<!-- ```django
-{% for key, value in currentAlarms %}
+```django
+{{ "{% for key, value in currentAlarms " }}%}
 Alarm: {{ key }} : {{ value.ruleName }} : {{ value.updatedAt }}
 {% endfor %}
 
@@ -33,7 +33,7 @@ It is in the current data dictionary.
 {% with arrayOfItems|first as firstItem %}
     {{ firstItem.Name }}
 {% endwith %}
-```  -->
+``` 
 
 
 Output using example context:
