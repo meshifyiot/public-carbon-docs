@@ -4,14 +4,14 @@ Schedule strings are used in user subscriptions. They are used to define time ra
 
 Example:
 ```
-06|12:00 - 14:00, 15:30 - 16:00; 1|8:00 - 17:00;
+06|12:00-14:00,15:30-16:00;1|8:00-17:00;
 ```
 
 Each schedule is delimited by `;` so we have two schedules in this string.
 
 ```
-06|12:00 - 14:00, 15:30 - 16:00
-1|8:00 - 17:00
+06|12:00-14:00,15:30-16:00
+1|8:00-17:00
 ```
 
 Each schedule has a days section and a time range section delimited by `|`. This section will contain numbers `0` through `6` representing each day starting with Sunday respectively. In the first schedule of the example the days section is defined as:
@@ -26,7 +26,7 @@ This indicates the time ranges to follow are effective on Sunday (`0`) and Satur
 The time range section describes the time ranges for the schedule. The times must be in `24 hour` time, and there can be multiple time ranges delimited  In the first schedule of the example the time range section is defined as:
 
 ```
-12:00 - 14:00, 15:30 - 16:00
+12:00-14:00,15:30-16:00
 ```
 
 This indicates that times are allowed from noon to 2 PM and 3:30 PM to 4 PM. NOTE the start time must be before the end time - the time range cannot jump over midnight. `23:00-6:00` would be considered invalid.
