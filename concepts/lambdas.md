@@ -3,13 +3,11 @@
 Carbon lambdas are context aware functions called on a message from a node type. They can be chained ie a lambda can trigger another lambda however there are some limitations. A message sent by a lambda will not be able to trigger the same lambda (recursion). There will also be a maximum depth limit of 10 - meaning the number of nested or chained lambda calls will be limited to 10. Lambdas must run under 300ms. "Best practice" target is 100ms. We expose a `ctx` variable and several functions to provide additional information to the lambda functions. Lambdas are fairly open ended, if a lambda can't do it properly then you should attach to one of the existing "integration" points so that a custom service can handle whatever additional logic.
 
 When to use a lambda:
-Lambdas are intended to provide additional functionality over rules. They can handle some complicated workflows and run additional business rules resulting in more then just a state change. Variables and custom complicated functions and workflows can be implemented in a lambda.
+Lambdas are intended to provide additional functionality over rules. They can handle some complicated workflows and run additional business rules resulting in more than just a state change. Variables and custom complicated functions and workflows can be implemented in a lambda.
 
 When to not use a lambda:
 When you can use a rule. If your lambda is limited OR hard to maintain because of the nature of being triggered on a per message basis. Extremely complicated / custom integrations with 3rd party systems, and a need for complicated states. Finally if the lambda is resource intensive to where it would cause scale issues for carbon. If any of the more complicated scenarios occur the solution would be using a websocket integration point throughout carbon in combination with the API to provide a solution. 
 ´
-Lambdas can be tested here:
-TODO add swagger link or something ?
 
 ## Table Of Contents
 
@@ -21,6 +19,7 @@ TODO add swagger link or something ?
     - [log(args ... )](#logargs--)
     - [getCurrentDataByUniqueId(uniqueId, channelNames)](#getcurrentdatabyuniqueiduniqueid-channelnames)
     - [getHistoryDataByUniqueId(uniqueId, channelName, start, end)](#gethistorydatabyuniqueiduniqueid-channelname-start-end)
+    - [getNodeInfo(uniqueId)](#getnodeinfouniqueid)
     - [getNodeMetadata(uniqueId)](#getnodemetadatauniqueid)
 - [Testing](#testing)
     - [TestResult{}](#testresult)
@@ -226,6 +225,29 @@ log(JSON.stringify(historicalData, null, 2))
 */
 ```
 
+### getNodeInfo(uniqueId)
+
+Will return information describing the node that triggered the lambda
+
+#### Params
+
+* uniqueId `string` - the unique id of the node you would like to get info on.
+
+#### Returns
+nodeInfo - `object` - returns an object containing attributes of the node.
+
+#### Example
+
+```javascript
+var nodeInfo = getNodeInfo('00:00:00:00:00')
+log(JSON.stringify(nodeInfo, null, 2))
+/*
+{
+    "someKey": "some value"
+}
+*/
+```
+ 
 ### getNodeMetadata(uniqueId)
 
 Will get the current Metadata value for the node requested.
