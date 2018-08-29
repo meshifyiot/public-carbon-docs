@@ -75,7 +75,7 @@ For C:
 }
 ```
 
-And we were getting the Theme for an User in Folder C, we would receive:
+And we were getting the Theme for a User in Folder C, we would receive:
 
 ```
 {
@@ -108,3 +108,11 @@ Dashboard, Admin, and Activate; we would recommend a Theme JSON structure such a
     }
 }
 ```
+
+### List of Theme Properties
+
+This is an ongoing list of theme properties that will change the look and behavior of Admin and Dashboard by default. Please note that theme key/value pairs can be referenced in nodetype templates, so there is essentially no limit to the amount of properties that can be leveraged.
+
+- logoUrl: file path to an image that will be used as the company's logo
+- titleText: Text to be displayed in the browser tab while the property is open
+- primaryColor: Main color to be displayed in the Dashboard core
