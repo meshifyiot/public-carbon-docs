@@ -182,7 +182,11 @@ This is an example of the context object:
         "firstName": "",
         "lastName": "",
         "notificationSchedule": "",
-        "phone": ""
+        "phone": "",
+        "preferences": {
+            "temp_units": "F",
+            "favorite_color": "blue"
+        }
     },
     "theme": {}
 }

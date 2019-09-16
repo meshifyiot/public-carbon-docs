@@ -63,7 +63,7 @@ Each person accessing Meshify is a user. A user authenticates using their e-mail
 
 A user is placed in one or more folders and has access to any folders at or below their assignment.
 
-Users have [Metadata](#metadata).
+Users have [Metadata](#metadata) and [Preferences](#preferences).
 
 ### <a name="roles">Roles</a>
 
@@ -146,6 +146,8 @@ Common uses of Lambdas include:
 
 Instance objects in Carbon (such as users and folders) have json-based metadata container that can be used to extend the data structure for nodes. Metadata can be read and written from within templates on the standard dashboard core or used with new applications or cores.
 
+### <a name="preferences">Preferences</a>
+Preferences are a feature of users intended to store information such as preferred temperature units.  It is an open format, so it is quite flexible in the information that can be stored.
 
 ### <a name="drivers">Drivers</a>
 
