@@ -46,7 +46,3 @@ Notes:
 
 - Omitting the timestamp or setting it to 0 will replace it with the current time in UTC when the message arrives to the server
 - JSON can be sent as the `"value"`, but you will not be able to write Rules against it (this may change in the future)
-
-## Version 2
-
-Expected Q3 2018.
