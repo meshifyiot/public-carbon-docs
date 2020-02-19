@@ -38,6 +38,7 @@
   - [Theming](/cms/theming.md)
 - [Api](http://carbon-docs.meshify.com)
 - [Examples](/examples)
+  - [Create and Test a Reaction](examples/reactionTest.md)
 - [Overview](#Overview)
 
 ## Overview

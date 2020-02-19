@@ -82,7 +82,7 @@ To receive reactions, you will need to subscribe to the Notification Schema you 
 ### Test the Reaction
 Congratulations, you have set up everything, you now can test your work.  The main admin does not have the ability to simulate node reactions. For this we will be directly accessing the Carbon API using [curl](https://curl.haxx.se/), but you can achieve similar results with something like [Postman](https://www.postman.com/).
 - For this we will need some information about the things we created above:
-  - The Node ID, you can get this by editing the node in the admin, look at the URL and find the number after "nodes/": https://carbon.meshify.com/admin#/nodes/***181359***?pageNumber=0&rowsPerPage=50&tab=0.  In this case, 181359.
+  - The Node ID, you can get this by editing the node in the admin, look at the URL and find the number after "nodes/": https://carbon.meshify.com/admin#/nodes/123456?pageNumber=0&rowsPerPage=50&tab=0.  In this case, 123456.
   - The channel name: "dummychan"
   - A time from within the past 24 hours in UTC format like so `2020-02-19T17:08:04Z`. You can get the current UTC time at [https://www.timeanddate.com/worldclock/timezone/utc](https://www.timeanddate.com/worldclock/timezone/utc).
   - Your login credentials to the Carbon Admin.
