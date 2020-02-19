@@ -37,6 +37,7 @@
     - [GPS Image](/cms/templates/mi-gps-image.md)
   - [Theming](/cms/theming.md)
 - [Api](http://carbon-docs.meshify.com)
+- [Examples](/examples)
 - [Overview](#Overview)
 
 ## Overview
