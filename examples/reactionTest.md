@@ -84,9 +84,9 @@ Congratulations, you have set up everything, you now can test your work.  The ma
 - For this we will need some information about the things we created above:
   - The Node ID, you can get this by editing the node in the admin, look at the URL and find the number after "nodes/": https://carbon.meshify.com/admin#/nodes/123456?pageNumber=0&rowsPerPage=50&tab=0.  In this case, 123456.
   - The channel name: "dummychan"
-  - A time from within the past 24 hours in UTC format like so `2020-02-19T17:08:04Z`. You can get the current UTC time at [https://www.timeanddate.com/worldclock/timezone/utc](https://www.timeanddate.com/worldclock/timezone/utc).
+  - Optional: A time from within the past 24 hours in UTC format like so `2020-02-19T17:08:04Z`. You can get the current UTC time at [https://www.timeanddate.com/worldclock/timezone/utc](https://www.timeanddate.com/worldclock/timezone/utc).
   - Your login credentials to the Carbon Admin.
-- POST to the publish API to simulate the node firing a message.  Replace `<<NODE_ID>>` in both spots with the node id you found above.  Replace `<<TIMESTAMP>>` with the time from above in the format `2020-02-19T17:08:04Z`, `<<USERNAME>>` with your Carbon User Name, `<<PASSWORD>>` with your Carbon Password:
+- POST to the publish API to simulate the node firing a message.  Replace `<<NODE_ID>>` in both spots with the node id you found above.  Replace `<<TIMESTAMP>>` with the time from above in the format `2020-02-19T17:08:04Z`, or remove the "timestamp" section from the json completely.  Replace `<<USERNAME>>` with your Carbon User Name, `<<PASSWORD>>` with your Carbon Password:
   ```
   curl -X POST -i -d '{"channelName":"dummychan","nodeId":<<NODE_ID>>,"parentNodeId":<<NODE_ID>>,"timestamp":"<<TIMESTAMP>>","traceId":"hn8g7gvpz3","value":true}' -u "<<USERNAME>>:<<PASSWORD>>" https://carbon.meshify.com/api/publish/cloud
   ```
