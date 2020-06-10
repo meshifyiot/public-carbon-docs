@@ -108,7 +108,10 @@ This is an example of the context object:
         "updatedAt": "2017-10-30T16:28:41.161646Z"
     },
     "node": {
+        "area": "janitor's closet",
+        "building": "Frost Tower",
         "createdAt": "2017-10-30T16:28:41.161646Z",
+        "floor": "10th",
         "folderId": 18,
         "id": 15,
         "isActive": true,
@@ -151,7 +154,10 @@ This is an example of the context object:
         "vanityName": ""
     },
     "parentNode": {
+        "area": "northeast corner",
+        "building": "Frost Tower",
         "createdAt": "2017-10-30T16:28:41.161646Z",
+        "floor": "12th",
         "folderId": 18,
         "id": 15,
         "isActive": true,
