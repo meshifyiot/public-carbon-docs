@@ -21,6 +21,7 @@ When you can use a rule. If your lambda is limited OR hard to maintain because o
     - [getHistoryDataByUniqueId(uniqueId, channelName, start, end)](#gethistorydatabyuniqueiduniqueid-channelname-start-end)
     - [getNodeInfo(uniqueId)](#getnodeinfouniqueid)
     - [getNodeMetadata(uniqueId)](#getnodemetadatauniqueid)
+    - [getOccupancy(folderID, timestamp)](#getoccupancyfolderidtimestamp)
 - [Testing](#testing)
     - [TestResult{}](#testresult)
 
@@ -267,6 +268,37 @@ log(JSON.stringify(metadata, null, 2))
 /*
 {
     "someKey": "some value"
+}
+*/
+```
+
+### getOccupancy(folderID, timestamp)
+
+Returns the scheduled occupancy state for the folder at the given time.
+
+#### Params
+
+* folderID `int` - the folder's ID;
+* timestamp `int` - the time for checking occupancy state.
+
+#### Returns
+
+occupancyState - `object` - the occupancy state for the folder at the given time:
+
+* isScheduled - `bool` - true if any occupacy schedule or the override for the given date present;
+* isOccupied - `bool` - true if location (folder) should be occupied at the given time (calculated by occupancy schedule and override);
+* timezone - `string` - the folder's timezone which was used to calculate `isOccupied`
+
+#### Example
+
+```javascript
+var node = getNodeInfo(ctx.uniqueId)
+log(JSON.stringify(getOccupancy(node.FolderID, ctx.timestamp), null, 2))
+/*
+{
+  "isOccupied": false,
+  "isScheduled": true,
+  "timezone": "America/Chicago"
 }
 */
 ```

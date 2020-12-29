@@ -125,7 +125,8 @@ somechannel.timestamp
 Included with the current channel context are helper variables. Currently there is only one variables as seen below: 
 
 ```javascript
-now    // this is the current time in unix epoch seconds (UTC)
+now       // this is the current time in unix epoch seconds (UTC)
+occupied  // true when node's folder has an occupancy schedule and folder is occupied at datapoint's timestamp
 ```
 
 ## Cron & Debounce Timers
