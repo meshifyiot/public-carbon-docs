@@ -21,7 +21,7 @@ When you can use a rule. If your lambda is limited OR hard to maintain because o
     - [getHistoryDataByUniqueId(uniqueId, channelName, start, end)](#gethistorydatabyuniqueiduniqueid-channelname-start-end)
     - [getNodeInfo(uniqueId)](#getnodeinfouniqueid)
     - [getNodeMetadata(uniqueId)](#getnodemetadatauniqueid)
-    - [getOccupancy(folderID, timestamp)](#getoccupancyfolderidtimestamp)
+    - [getOccupancy(folderID, timestamp)](#getoccupancyfolderid-timestamp)
 - [Testing](#testing)
     - [TestResult{}](#testresult)
 
