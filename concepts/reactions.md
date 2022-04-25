@@ -1,5 +1,29 @@
 # Reactions
-Reactions are the result of a state change from a rule. Currently a reaction will be either an sms, an email, or [HTTP POST request webhook](./concepts/webhooktemplates). The body, subject, url, from email, and from name fields are all templateable and will default to tenant settings if they are set or meshify's platform defaults. Reactions have a deduplication mechanism, where the the exact same message will only be sent out once every 90 seconds. 
+Reactions are the result of a state change from a rule. Currently a reaction will be either an sms, an email, or [HTTP POST request webhook](./concepts/webhooktemplates). The body, subject, url, from email, and from name fields are all templateable and will default to tenant settings if they are set or meshify's platform defaults. Reactions have a deduplication mechanism, where the the exact same message will only be sent out once every 90 seconds.
+
+## Reactions V2 Delayed Parameters:
+
+Basic rules for delayed reactions:
+
+* If a reaction no longer exists, it will be removed from delayed queue
+* If a delayed reaction's alert info does not match timestamps with current alert info, it will be removed from delayed queue
+* If a user is unsubscribed before a delayed reaction is ready, they will not be on the contact list.
+
+Example payload:
+```
+"delayparams": {
+  "delay":	  60,
+  "landline": 0,
+  "type":	    "NOACK"
+}
+```
+
+* delay - `int` - Once processing of reactions begins, this will be pushed into a delayed queue for given value in seconds
+* landline - `int` - If `0` seconds and reaction type is `phone`, All subscribed users will be checked for a landline phone number and contacted imediately before the rest of the subscribers are pushed into the delayed.
+    * If `landline` anything but `0`, then it will be ignored.  May be used to delay landlines by different time value in future.
+* type - `string enum ["ALWAY", "NOACK"]` - How the reaction should act after returning from delayed queue
+    * ALWAYS - The subscribed users should always receive a reaction
+    * NOACK - The subscribed users should only receive a reaction if the alert has not been acknowledged
 
 ## Templates
 
