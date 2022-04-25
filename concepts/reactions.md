@@ -12,9 +12,9 @@ Basic rules for delayed reactions:
 Example payload:
 ```
 "delayparams": {
-  "delay":	  60,
+  "delay":    60,
   "landline": 0,
-  "type":	    "NOACK"
+  "type":     "NOACK"
 }
 ```
 
