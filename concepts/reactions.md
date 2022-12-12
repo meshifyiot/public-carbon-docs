@@ -194,6 +194,17 @@ This is an example of the context object:
             "favorite_color": "blue"
         }
     },
+    "responseTokens": {
+        "userId": 56737,
+        "nodeId": 175132,
+        "code": "U0PMGWP",
+        "createdAt": "2021-12-07T22:13:10Z",
+        "tid": 1,
+        "notificationId": 800,
+        "reactionId": 2580,
+        "ruleId": 842,
+        "alarmTs": "2021-12-07T22:13:10Z"
+    }
     "theme": {}
 }
 ```

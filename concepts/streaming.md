@@ -6,6 +6,8 @@ The carbon api has a websocket resource `api/stream` that exposes a real time fe
 
 * `/api/stream/:id/event` - opens up one websocket that will publish all events for the node `:id`. To unsubscribe simply close the socket.
 
+* `/api/stream/:id/responses` - opens up one websocket that will publish all user responses for the node `:id`. To unsubscribe simply close the socket.
+
 * `/api/stream/all` - is a single websocket that will allow the consumer to subscribe, and unsubscribe to multiple node's events and/or data points. It also supports channel filtering.
 
 ### `/api/stream/:id/data`
@@ -55,6 +57,28 @@ Example Payload:
 }
 ```
 
+### `/api/stream/:id/response`
+
+You can subscribe to a specific node's user response feed using the following command:
+Example Subscription:
+```bash
+TODO: POST /api/stream/:id/response UPGRADE
+```
+
+After you have subscribed the socket will receive a json payload whenever a change occurs due to a user feedback response in in carbon.
+
+Example Payload:
+```json
+{
+  "nodeId": 1,
+  "ruleId": 1,
+  "userId": 1,
+  "timestamp": "",
+  "updatedAt": "",
+  "change": "ack"
+}
+```
+
 ### `/api/stream/all`
 
 The `stream/all` is similar to the other endpoints except it allows the consumer to receive data, and events from multiple nodes through the same websocket.
@@ -79,6 +103,8 @@ Example `request` payload:
 * `unsubscribe:data` - will unsubscribe a node from the socket feed.
 * `subscribe:event` -  will subscribe to a node's events.
 * `unsubscribe:event` - will unsubscribe from a node's events.
+* `subscribe:response` -  will subscribe to a node's user responses.
+* `unsubscribe:response` - will unsubscribe from a node's user responses.
 
 #### Available Arguments
 
@@ -115,6 +141,7 @@ Example `response` payload:
 * `acknowledge` - this is an acknowledge response to notify the consumer of the success status of their request.
 * `data` - this is a payload with a datapoint from a node.
 * `event` - this is a payload type with an event that resulted from a state change.
+* `response` - this is a payload type with an event that resulted from a user response.
 
 Example data payload:
 
@@ -142,5 +169,19 @@ Example event payload:
   "value": "some_value",
   "ruleId": 1,
   "change": ""
+}
+```
+
+Example response payload:
+
+
+```json
+{
+  "nodeId": 1,
+  "ruleId": 1,
+  "userId": 1,
+  "timestamp": "",
+  "updatedAt": "",
+  "change": "acknowledge"
 }
 ```

@@ -29,6 +29,7 @@ When you need custom variables, complicated formulas/functions or complicated bu
   - [channelMin(channelName, lookBackMinutes)](#channelminchannelname-lookbackminutes)
   - [channelSum(channelName, lookBackMinutes)](#channelsumchannelname-lookbackminutes)
   - [channelAverage(channelName, lookBackMinutes)](#channelaveragechannelname-lookbackminutes)
+  - [channelCountByUniqueID(nodeuid, channelName, lookBackMinutes)](#channelcountbyuniqueidnodeuid-channelname-lookbackminutes)
 - [Testing](#testing)
 
 ## Basics
@@ -156,6 +157,7 @@ There are several functions that are exposed to the rule execution engine. Gener
 - [channelMin(channelName, lookBackMinutes)](#channelminchannelname-lookbackminutes)
 - [channelSum(channelName, lookBackMinutes)](#channelsumchannelname-lookbackminutes)
 - [channelAverage(channelName, lookBackMinutes)](#channelaveragechannelname-lookbackminutes)
+- [channelCountByUniqueID(nodeuid, channelName, lookBackMinutes)](#channelcountbyuniqueidnodeuid-channelname-lookbackminutes)
 
 ### min(n1, n2)
 
@@ -357,6 +359,26 @@ channelAverage('numberchannel',525600) > 1  // true
 
 ```javascript
 channelAverage('numberchannel',525600) > 1  // true
+```
+
+### channelCountByUniqueID(nodeUID, channelName, lookBackMinutes)
+
+Returns the number values for a given node unique id, channel name, and time period.
+
+#### Params
+
+- nodeUniqueID `string` - the unique id of the node to analyze.
+- channelName `string` - the name of the channel to analyze.
+- lookBackMinutes `int` - the number of minutes from now to look back.
+
+#### Returns
+
+channelCount - `int` - the number of values for the given channel during the time period.
+
+#### Example
+
+```javascript
+channelCountByUniqueID( gateway.value , 'numberchannel',525600) > 1 // true
 ```
 
 ## Testing
