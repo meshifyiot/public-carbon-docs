@@ -9,6 +9,7 @@
   - [Lambdas](/concepts/lambdas.md)
   - [Reactions](/concepts/reactions.md)
     - [Webhooks](/concepts/webhooktemplates.md)
+	  - [Alert Acknowledgements](/concepts/alertacknowledgements.md)
   - [Rules](/concepts/rules.md)
   - [Schedules](/concepts/schedules.md)
   - [Streaming](/concepts/streaming.md)

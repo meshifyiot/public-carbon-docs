@@ -7,6 +7,7 @@
 - [Lambdas](./lambdas.md)
 - [Reactions](./reactions.md)
 	- [Webhooks](./webhooktemplates.md)
+	- [Alert Acknowledgements](./alertacknowledgements.md)
 - [Rules](./rules.md)
 - [Schedules](./schedules.md)
 - [Streaming](./streaming.md)
